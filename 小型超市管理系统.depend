@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1492077816 source:h:\c程序上机练习\程序设计实践实验\大作业\小型超市管理系统\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
+1492106290 source:h:\c程序上机练习\程序设计实践实验\大作业\相关资料\小型超市管理系统\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
+1494327019 source:f:\策划与练习\c程序练习\c程序上机练习\程序设计实践实验\大作业\相关资料\小型超市管理系统\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
+1494327702 source:f:\策划与练习\程序开发\c程序练习\c程序上机练习\程序设计实践实验\大作业\相关资料\小型超市管理系统\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
