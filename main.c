@@ -3,112 +3,113 @@
 #include <string.h>
 #include <time.h>
 
-struct USER//ÓÃ»§ĞÅÏ¢
+struct USER//ç”¨æˆ·ä¿¡æ¯
 {
-    char name[20];//ÓÃ»§Ãû
-    char user[20];//ÕËºÅ
-    char password[20];//ÃÜÂë
-    char type[20];//ÓÃ»§ÀàĞÍ
-    int num;//Êı¾İ±àºÅ/×ÜÁ¿
+    char name[20];//ç”¨æˆ·å
+    char user[20];//è´¦å·
+    char password[20];//å¯†ç 
+    char type[20];//ç”¨æˆ·ç±»å‹
+    int num;//æ•°æ®ç¼–å·/æ€»é‡
     struct USER *next;
 };
 typedef struct USER user_lnode,*user_list;
 
-struct INVENTORY//¿â´æĞÅÏ¢
+struct INVENTORY//åº“å­˜ä¿¡æ¯
 {
-    char id[20];//±ê×¼ÂëÎª13Î»£¬´Ë´¦¶¨Òå20Î»
-    char name[30];//ÉÌÆ·Ãû³Æ
-    char company[30];//Éú²úÆóÒµ
-    char type[10];//ÉÌÆ··ÖÀà
-    char date_manufacture[20];//Éú²úÈÕÆÚ
-    char date_keep[10];//±£ÖÊÆÚ
-    int quantity;//¿â´æÊıÁ¿
-    double pirce_enter;//±ê¼Û
-    double pirce_sell;//½¨ÒéÏúÊÛ¼Û
-    int num;//Êı¾İĞÅÏ¢×ÜÁ¿/±àºÅ
+    char id[20];//æ ‡å‡†ç ä¸º13ä½ï¼Œæ­¤å¤„å®šä¹‰20ä½
+    char name[30];//å•†å“åç§°
+    char company[30];//ç”Ÿäº§ä¼ä¸š
+    char type[10];//å•†å“åˆ†ç±»
+    char date_manufacture[20];//ç”Ÿäº§æ—¥æœŸ
+    char date_keep[10];//ä¿è´¨æœŸ
+    int quantity;//åº“å­˜æ•°é‡
+    double pirce_enter;//æ ‡ä»·
+    double pirce_sell;//å»ºè®®é”€å”®ä»·
+    int num;//æ•°æ®ä¿¡æ¯æ€»é‡/ç¼–å·
     struct INVENTORY *next;
 };
 typedef struct INVENTORY inventory_lnode,*inventory_list;
 
-struct COMMODITY//ÏúÊÛĞÅÏ¢
+struct COMMODITY//é”€å”®ä¿¡æ¯
 {
-    char id[20];//±ê×¼ÂëÎª13Î»£¬´Ë´¦¶¨Òå20Î»
-    char name[30];//ÉÌÆ·Ãû³Æ
-    char company[30];//Éú²úÆóÒµ
-    char type[10];//ÉÌÆ··ÖÀà
-    char date_manufacture[20];//Éú²úÈÕÆÚ
-    char date_market[30];//ÏúÊÛÈÕÆÚ
-    char operator_name[20];//²Ù×÷ÈË´úÂë
-    double pirce_enter;//±ê¼Û
-    double pirce_sell;//ÏúÊÛ¼Û
-    int sell_num;//ÏúÊÛÁ¿
-    double pircr_profit;//ÀûÈó
-    int num;//Êı¾İĞÅÏ¢×ÜÁ¿/±àºÅ
-    char serial_num[12];//¾ÅÎ»Êı¹ºÎïÁ÷Ë®ºÅ
+    char id[20];//æ ‡å‡†ç ä¸º13ä½ï¼Œæ­¤å¤„å®šä¹‰20ä½
+    char name[30];//å•†å“åç§°
+    char company[30];//ç”Ÿäº§ä¼ä¸š
+    char type[10];//å•†å“åˆ†ç±»
+    char date_manufacture[20];//ç”Ÿäº§æ—¥æœŸ
+    char date_market[30];//é”€å”®æ—¥æœŸ
+    char operator_name[20];//æ“ä½œäººä»£ç 
+    double pirce_enter;//æ ‡ä»·
+    double pirce_sell;//é”€å”®ä»·
+    int sell_num;//é”€å”®é‡
+    double pircr_profit;//åˆ©æ¶¦
+    int num;//æ•°æ®ä¿¡æ¯æ€»é‡/ç¼–å·
+    char serial_num[12];//ä¹ä½æ•°è´­ç‰©æµæ°´å·
     struct COMMODITY *next;
 };
 typedef struct COMMODITY commodity_lnode,*commodity_list;
 
+void clear_display();
 void display_main();
 void display_administration();
 void display_common();
 
-void user_load(user_list head); //ÔØÈëÓÃ»§Êı¾İ
-void user_save(user_list head); //´æÈëÓÃ»§Êı¾İµ½´ÅÅÌ
-void commodity_load(commodity_list head); //ÔØÈëÉÌÆ·Êı¾İ
-void commodity_save(commodity_list head); //´æÈëÉÌÆ·Êı¾İµ½´ÅÅÌ
-void inventory_load(inventory_list head); //ÔØÈë¿â´æÊı¾İ
-void inventory_save(inventory_list head); //´æÈë¿â´æÊı¾İµ½´ÅÅÌ
+void user_load(user_list head); //è½½å…¥ç”¨æˆ·æ•°æ®
+void user_save(user_list head); //å­˜å…¥ç”¨æˆ·æ•°æ®åˆ°ç£ç›˜
+void commodity_load(commodity_list head); //è½½å…¥å•†å“æ•°æ®
+void commodity_save(commodity_list head); //å­˜å…¥å•†å“æ•°æ®åˆ°ç£ç›˜
+void inventory_load(inventory_list head); //è½½å…¥åº“å­˜æ•°æ®
+void inventory_save(inventory_list head); //å­˜å…¥åº“å­˜æ•°æ®åˆ°ç£ç›˜
 
-int initialize(user_list user_head,commodity_list commodity_head,inventory_list inventory_head);//³õÊ¼»¯
-int loading_main(user_list head,user_list mine);//ÓÃ»§µÇÂ½Ö÷º¯Êı 1¡ª¡ª¸ß¼¶¹ÜÀí 2¡ª¡ªÆÕÍ¨ÓÃ»§ -1¡ª¡ªÃÜÂë´íÎó -2¡ª¡ªÓÃ»§²»´æÔÚ
-void administration_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine);//¸ß¼¶ÓÃ»§½çÃæ
-void common_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine);//ÆÕÍ¨ÓÃ»§½çÃæ
+int initialize(user_list user_head,commodity_list commodity_head,inventory_list inventory_head);//åˆå§‹åŒ–
+int loading_main(user_list head,user_list mine);//ç”¨æˆ·ç™»é™†ä¸»å‡½æ•° 1â€”â€”é«˜çº§ç®¡ç† 2â€”â€”æ™®é€šç”¨æˆ· -1â€”â€”å¯†ç é”™è¯¯ -2â€”â€”ç”¨æˆ·ä¸å­˜åœ¨
+void administration_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine);//é«˜çº§ç”¨æˆ·ç•Œé¢
+void common_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine);//æ™®é€šç”¨æˆ·ç•Œé¢
 
-void user_main_administration(user_list user_head,user_list mine);//¸ß¼¶ÓÃ»§½ç¹ÜÀíÃæ
-void user_main_administration_ergodicity(user_list user_head,user_list mine);//±éÀúÓÃ»§ĞÅÏ¢
-void user_main_administration_add(user_list user_head,user_list mine);//Ìí¼ÓĞÂÓÃ»§
-void user_main_administration_rank(user_list user_head,user_list mine);//Éí·İĞŞ¸Ä
-void user_main_administration_delete(user_list user_head,user_list mine);//×¢ÏúÓÃ»§
-void user_main_administration_mine(user_list user_head,user_list mine);//ÎÒµÄĞÅÏ¢
-void user_main_administration_revamp(user_list user_head,user_list mine);//ĞŞ¸ÄÎÒµÄÃÜÂë
-void user_main_common(user_list user_head,user_list mine);//ÆÕÍ¨ÓÃ»§¹ÜÀí½çÃæ
-void inventory_main_administration(inventory_list inventory_head,user_list mine);//¸ß¼¶¿â´æÇé¿öÖ÷º¯Êı
-void inventory_main_administration_ergodicity(inventory_list inventory_head,user_list mine);//±éÀú¿â´æĞÅÏ¢
-void inventory_main_administration_add(inventory_list inventory_head,user_list mine);//Èë¿â
-void inventory_main_administration_revamp(inventory_list inventory_head,user_list mine);//ĞŞ¸ÄÉÌÆ·ĞÅÏ¢
-void inventory_main_administration_find(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ
-void inventory_main_administration_printfi(inventory_list inventory_head,int num);//Êä³ö¿â´æ±íÖĞi´¦µÄĞÅÏ¢
-int inventory_main_administration_find_id(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´Ê¶±ğÂë
-void inventory_main_administration_find_name(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´Ãû³Æ
-void inventory_main_administration_find_company(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´Éú²úÆóÒµ
-void inventory_main_administration_find_type(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´ÉÌÆ··ÖÀà
-void inventory_main_administration_find_manufacture(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´Éú²úÈÕÆÚ
-void inventory_main_administration_find_quantity(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´¿â´æÁ¿
-void inventory_main_administration_find_pirce(inventory_list inventory_head,user_list mine);//ÉÌÆ·²éÕÒ-°´½ø¼ÛÇø¼ä
-void inventory_main_administration_adds(inventory_list inventory_head,user_list mine);//ÅúÁ¿Èë¿â
-void inventory_main_administration_adds_file(inventory_list inventory_head,user_list mine);//ÅúÁ¿µ¼Èë¿â´æÊı¾İ
-void inventory_main_administration_de_weight(inventory_list inventory_head,user_list mine);//¿â´æĞÅÏ¢ÖØ¸´ĞÅÏ¢´¦Àí
-void inventory_main_common(inventory_list inventory_head,user_list mine);//ÆÕÍ¨¿â´æÇé¿öÖ÷º¯Êı
+void user_main_administration(user_list user_head,user_list mine);//é«˜çº§ç”¨æˆ·ç•Œç®¡ç†é¢
+void user_main_administration_ergodicity(user_list user_head,user_list mine);//éå†ç”¨æˆ·ä¿¡æ¯
+void user_main_administration_add(user_list user_head,user_list mine);//æ·»åŠ æ–°ç”¨æˆ·
+void user_main_administration_rank(user_list user_head,user_list mine);//èº«ä»½ä¿®æ”¹
+void user_main_administration_delete(user_list user_head,user_list mine);//æ³¨é”€ç”¨æˆ·
+void user_main_administration_mine(user_list user_head,user_list mine);//æˆ‘çš„ä¿¡æ¯
+void user_main_administration_revamp(user_list user_head,user_list mine);//ä¿®æ”¹æˆ‘çš„å¯†ç 
+void user_main_common(user_list user_head,user_list mine);//æ™®é€šç”¨æˆ·ç®¡ç†ç•Œé¢
+void inventory_main_administration(inventory_list inventory_head,user_list mine);//é«˜çº§åº“å­˜æƒ…å†µä¸»å‡½æ•°
+void inventory_main_administration_ergodicity(inventory_list inventory_head,user_list mine);//éå†åº“å­˜ä¿¡æ¯
+void inventory_main_administration_add(inventory_list inventory_head,user_list mine);//å…¥åº“
+void inventory_main_administration_revamp(inventory_list inventory_head,user_list mine);//ä¿®æ”¹å•†å“ä¿¡æ¯
+void inventory_main_administration_find(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾
+void inventory_main_administration_printfi(inventory_list inventory_head,int num);//è¾“å‡ºåº“å­˜è¡¨ä¸­iå¤„çš„ä¿¡æ¯
+int inventory_main_administration_find_id(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰è¯†åˆ«ç 
+void inventory_main_administration_find_name(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰åç§°
+void inventory_main_administration_find_company(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰ç”Ÿäº§ä¼ä¸š
+void inventory_main_administration_find_type(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰å•†å“åˆ†ç±»
+void inventory_main_administration_find_manufacture(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰ç”Ÿäº§æ—¥æœŸ
+void inventory_main_administration_find_quantity(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰åº“å­˜é‡
+void inventory_main_administration_find_pirce(inventory_list inventory_head,user_list mine);//å•†å“æŸ¥æ‰¾-æŒ‰è¿›ä»·åŒºé—´
+void inventory_main_administration_adds(inventory_list inventory_head,user_list mine);//æ‰¹é‡å…¥åº“
+void inventory_main_administration_adds_file(inventory_list inventory_head,user_list mine);//æ‰¹é‡å¯¼å…¥åº“å­˜æ•°æ®
+void inventory_main_administration_de_weight(inventory_list inventory_head,user_list mine);//åº“å­˜ä¿¡æ¯é‡å¤ä¿¡æ¯å¤„ç†
+void inventory_main_common(inventory_list inventory_head,user_list mine);//æ™®é€šåº“å­˜æƒ…å†µä¸»å‡½æ•°
 
-void commodity_main_administration(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//¸ß¼¶ÏúÊÛÖ÷º¯Êı
-void commodity_main_administration_find(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//²éÑ¯ÓëÏúÊÛ
-void commodity_main_administration_sell(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//ÏúÊÛ³ÌĞò
-void commodity_main_administration_return(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//ÍË»õÁ÷³Ì
-void commodity_main_administration_record(commodity_list commodity_head,user_list mine);//½»Ò×¼ÇÂ¼µ÷È¡
-void commodity_main_administration_record_all(commodity_list commodity_head,user_list mine);//½»Ò×¼ÇÂ¼±éÀú
-void commodity_main_administration_record_seller(commodity_list commodity_head,user_list mine);//µ÷È¡ÏúÊÛÔ±½»Ò×¼ÇÂ¼
-void commodity_main_administration_record_order(commodity_list commodity_head,user_list mine);//µ÷È¡¶©µ¥ºÅ½»Ò×¼ÇÂ¼
-void commodity_main_administration_record_year(commodity_list commodity_head,user_list mine);//½»Ò×¼ÇÂ¼°´Äêµ÷È¡
-void commodity_main_administration_record_month(commodity_list commodity_head,user_list mine);//½»Ò×¼ÇÂ¼°´ÔÂµ÷È¡
-void commodity_main_administration_record_day(commodity_list commodity_head,user_list mine);//½»Ò×¼ÇÂ¼°´Ììµ÷È¡
-void commodity_main_administration_revamp(commodity_list commodity_head,user_list mine);//½»Ò×¼ÇÂ¼ĞŞ¸Ä
-void commodity_main_administration_analyse(commodity_list commodity_head,user_list mine);//½»Ò×Çé¿ö·ÖÎö
-void commodity_main_administration_grade();//ÏúÊÛ±í±íÍ·
-void transition(int num,char ch[10]);//ÀàĞÍ×ª»» ½²nÎ»ÕûĞÎÊı×Ö×ª»»Îª×Ö·ûÊı×é·ÅÔÚchÖĞ
-int transition_ch(char ch[20]);//ÀàĞÍ×ª»» ½«Êı×Ö´®×Ö·ûÊı×éµ¼³öÎªÕûĞÎÊı×Ö
-void commodity_main_administration_printfi(commodity_list commodity_head,int num);//Êä³öÏúÊÛ±íÖĞi´¦µÄĞÅÏ¢
-void commodity_main_common(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//ÆÕÍ¨ÏúÊÛÖ÷º¯Êı
+void commodity_main_administration(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//é«˜çº§é”€å”®ä¸»å‡½æ•°
+void commodity_main_administration_find(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//æŸ¥è¯¢ä¸é”€å”®
+void commodity_main_administration_sell(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//é”€å”®ç¨‹åº
+void commodity_main_administration_return(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//é€€è´§æµç¨‹
+void commodity_main_administration_record(commodity_list commodity_head,user_list mine);//äº¤æ˜“è®°å½•è°ƒå–
+void commodity_main_administration_record_all(commodity_list commodity_head,user_list mine);//äº¤æ˜“è®°å½•éå†
+void commodity_main_administration_record_seller(commodity_list commodity_head,user_list mine);//è°ƒå–é”€å”®å‘˜äº¤æ˜“è®°å½•
+void commodity_main_administration_record_order(commodity_list commodity_head,user_list mine);//è°ƒå–è®¢å•å·äº¤æ˜“è®°å½•
+void commodity_main_administration_record_year(commodity_list commodity_head,user_list mine);//äº¤æ˜“è®°å½•æŒ‰å¹´è°ƒå–
+void commodity_main_administration_record_month(commodity_list commodity_head,user_list mine);//äº¤æ˜“è®°å½•æŒ‰æœˆè°ƒå–
+void commodity_main_administration_record_day(commodity_list commodity_head,user_list mine);//äº¤æ˜“è®°å½•æŒ‰å¤©è°ƒå–
+void commodity_main_administration_revamp(commodity_list commodity_head,user_list mine);//äº¤æ˜“è®°å½•ä¿®æ”¹
+void commodity_main_administration_analyse(commodity_list commodity_head,user_list mine);//äº¤æ˜“æƒ…å†µåˆ†æ
+void commodity_main_administration_grade();//é”€å”®è¡¨è¡¨å¤´
+void transition(int num,char ch[10]);//ç±»å‹è½¬æ¢ è®²nä½æ•´å½¢æ•°å­—è½¬æ¢ä¸ºå­—ç¬¦æ•°ç»„æ”¾åœ¨chä¸­
+int transition_ch(char ch[20]);//ç±»å‹è½¬æ¢ å°†æ•°å­—ä¸²å­—ç¬¦æ•°ç»„å¯¼å‡ºä¸ºæ•´å½¢æ•°å­—
+void commodity_main_administration_printfi(commodity_list commodity_head,int num);//è¾“å‡ºé”€å”®è¡¨ä¸­iå¤„çš„ä¿¡æ¯
+void commodity_main_common(inventory_list inventory_head,commodity_list commodity_head,user_list mine);//æ™®é€šé”€å”®ä¸»å‡½æ•°
 
 int main()
 {
@@ -132,17 +133,17 @@ int main()
     inventory_head->next = NULL;
     user_head->next = NULL;
 
-    system("mode con cols=180 lines=80");
+    // system("mode con cols=180 lines=80");
 
     while(1)
     {
-    system("cls");
+    clear_display();
     display_main();
 
     scanf("%c",&sel);
     if(sel>'9'||sel<'0')
     {
-        for(i=0;i<60;i++)printf(" ");printf("ÊäÈë·Ç·¨£¬ÇëÖØĞÂÑ¡Ôñ£¡\n");
+        for(i=0;i<60;i++)printf(" ");printf("è¾“å…¥éæ³•ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼\n");
         system("pause");
         continue;
     }
@@ -150,17 +151,17 @@ int main()
     {
     case '1':
         {
-            user_load(user_head);//¼ÓÔØÓÃ»§ĞÅÏ¢µ½Á´±íuser
-            commodity_load(commodity_head);//¼ÓÔØÉÌÆ·ĞÅÏ¢µ½Á´±ícomodity
-            inventory_load(inventory_head);//¼ÓÔØ¿â´æĞÅÏ¢µ½Á´±íinventory
-            answer = loading_main(user_head,mine);//1¡ª¡ª¸ß¼¶¹ÜÀí 2¡ª¡ªÆÕÍ¨ÓÃ»§ -1¡ª¡ªÃÜÂë´íÎó -2¡ª¡ªÓÃ»§²»´æÔÚ
+            user_load(user_head);//åŠ è½½ç”¨æˆ·ä¿¡æ¯åˆ°é“¾è¡¨user
+            commodity_load(commodity_head);//åŠ è½½å•†å“ä¿¡æ¯åˆ°é“¾è¡¨comodity
+            inventory_load(inventory_head);//åŠ è½½åº“å­˜ä¿¡æ¯åˆ°é“¾è¡¨inventory
+            answer = loading_main(user_head,mine);//1â€”â€”é«˜çº§ç®¡ç† 2â€”â€”æ™®é€šç”¨æˆ· -1â€”â€”å¯†ç é”™è¯¯ -2â€”â€”ç”¨æˆ·ä¸å­˜åœ¨
         if(answer == 1)
-            administration_main(user_head,commodity_head,inventory_head,mine);//¸ß¼¶ÓÃ»§½çÃæ
+            administration_main(user_head,commodity_head,inventory_head,mine);//é«˜çº§ç”¨æˆ·ç•Œé¢
         else if(answer == 2)
-            common_main(user_head,commodity_head,inventory_head,mine);//ÆÕÍ¨ÓÃ»§½çÃæ
+            common_main(user_head,commodity_head,inventory_head,mine);//æ™®é€šç”¨æˆ·ç•Œé¢
         else
         {
-            for(i=0;i<60;i++)printf(" ");printf("Çë¼ì²éÄúµÄÓÃ»§ÃñºÍÃÜÂë£¬ÈôÍü¼Ç£¬¿É½øĞĞ³õÊ¼»¯²Ù×÷\n");
+            for(i=0;i<60;i++)printf(" ");printf("è¯·æ£€æŸ¥æ‚¨çš„ç”¨æˆ·æ°‘å’Œå¯†ç ï¼Œè‹¥å¿˜è®°ï¼Œå¯è¿›è¡Œåˆå§‹åŒ–æ“ä½œ\n");
             system("pause");
             continue;
         }
@@ -168,8 +169,8 @@ int main()
         }
     case '9':
         {
-            for(i=0;i<60;i++)printf(" ");printf("È·¶¨³õÊ¼»¯ÏµÍ³Âğ£¿\n");
-            for(i=0;i<50;i++)printf(" ");printf("¼ÌĞø(ÊäÈë1)£¬½«Çå¿ÕÈ«²¿ÏµÍ³Êı¾İ²¢³õÊ¼»¯¹ÜÀíÔ±\n");
+            for(i=0;i<60;i++)printf(" ");printf("ç¡®å®šåˆå§‹åŒ–ç³»ç»Ÿå—ï¼Ÿ\n");
+            for(i=0;i<50;i++)printf(" ");printf("ç»§ç»­(è¾“å…¥1)ï¼Œå°†æ¸…ç©ºå…¨éƒ¨ç³»ç»Ÿæ•°æ®å¹¶åˆå§‹åŒ–ç®¡ç†å‘˜\n");
             for(i=0;i<60;i++)printf(" ");scanf("%d",&sel2);
             getchar();
             if(sel2==1)
@@ -192,16 +193,16 @@ void display_main()
     for(i=0;i<60;i++)printf(" ");printf("           *          \n");
     for(i=0;i<60;i++)printf(" ");printf("        *     *        \n");
     for(i=0;i<60;i++)printf(" ");printf("     *           *      \n");
-    for(i=0;i<60;i++)printf(" ");printf("         ÄãºÃ£¡       \n");
+    for(i=0;i<60;i++)printf(" ");printf("         ä½ å¥½ï¼       \n");
     for(i=0;i<60;i++)printf(" ");printf("           *          \n");
     for(i=0;i<60;i++)printf(" ");printf("        *     *        \n");
     for(i=0;i<60;i++)printf(" ");printf("     *           *      \n");
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Ê¹ÓÃĞ¡ĞÍ³¬ÊĞ¹ÜÀíÏµÍ³£¡\n\n");
-    for(i=0;i<65;i++)printf(" ");printf("1.½øÈëÏµÍ³\n");
-    for(i=0;i<65;i++)printf(" ");printf("9.³õÊ¼»¯ÏµÍ³\n");
-    for(i=0;i<65;i++)printf(" ");printf("all else.ÍË³öÏµÍ³\n\n");
-    for(i=0;i<55;i++)printf(" ");printf("ÎÂÜ°ÌáÊ¾:Èç¹ûÄúÊÇµÚÒ»´ÎÊ¹ÓÃ¸ÃÏµÍ³£¬ÇëÏÈ¶ÔÏµÍ³½øĞĞ³õÊ¼»¯²Ù×÷£¡\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("Çë¼üÈëÄúÏëÒªÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿ä½¿ç”¨å°å‹è¶…å¸‚ç®¡ç†ç³»ç»Ÿï¼\n\n");
+    for(i=0;i<65;i++)printf(" ");printf("1.è¿›å…¥ç³»ç»Ÿ\n");
+    for(i=0;i<65;i++)printf(" ");printf("9.åˆå§‹åŒ–ç³»ç»Ÿ\n");
+    for(i=0;i<65;i++)printf(" ");printf("all else.é€€å‡ºç³»ç»Ÿ\n\n");
+    for(i=0;i<55;i++)printf(" ");printf("æ¸©é¦¨æç¤º:å¦‚æœæ‚¨æ˜¯ç¬¬ä¸€æ¬¡ä½¿ç”¨è¯¥ç³»ç»Ÿï¼Œè¯·å…ˆå¯¹ç³»ç»Ÿè¿›è¡Œåˆå§‹åŒ–æ“ä½œï¼\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·é”®å…¥æ‚¨æƒ³è¦æ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     return;
 }
 
@@ -211,19 +212,19 @@ void display_administration()
     for(i=0;i<60;i++)printf(" ");printf("           *           \n");
     for(i=0;i<60;i++)printf(" ");printf("        *     *        \n");
     for(i=0;i<60;i++)printf(" ");printf("     *           *     \n");
-    for(i=0;i<60;i++)printf(" ");printf("    ^^   ÄãºÃ£¡ ^^    \n");
+    for(i=0;i<60;i++)printf(" ");printf("    ^^   ä½ å¥½ï¼ ^^    \n");
     for(i=0;i<60;i++)printf(" ");printf("     *           *     \n");
     for(i=0;i<60;i++)printf(" ");printf("        *     *        \n");
     for(i=0;i<60;i++)printf(" ");printf("           *           \n");
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­¸ß¼¶¹ÜÀíÔ±½øÈëĞ¡ĞÍ³¬ÊĞ¹ÜÀíÏµÍ³£¡\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("¡ú1.¸ß¼¶ÓÃ»§¹ÜÀí½çÃæ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿é«˜çº§ç®¡ç†å‘˜è¿›å…¥å°å‹è¶…å¸‚ç®¡ç†ç³»ç»Ÿï¼\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("â†’1.é«˜çº§ç”¨æˆ·ç®¡ç†ç•Œé¢\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("¡ú2.¸ß¼¶¿â´æ¹ÜÀí½çÃæ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("â†’2.é«˜çº§åº“å­˜ç®¡ç†ç•Œé¢\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("¡ú3.¸ß¼¶ÏúÊÛ¹ÜÀí½çÃæ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("â†’3.é«˜çº§é”€å”®ç®¡ç†ç•Œé¢\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("¡ú0.ÍË³öÏµÍ³\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏë³ÌĞòÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<60;i++)printf(" ");printf("â†’0.é€€å‡ºç³»ç»Ÿ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç¨‹åºæ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     return;
 }
 void display_common()
@@ -232,29 +233,29 @@ void display_common()
     for(i=0;i<60;i++)printf(" ");printf("           *           \n");
     for(i=0;i<60;i++)printf(" ");printf("        *     *        \n");
     for(i=0;i<60;i++)printf(" ");printf("     *           *     \n");
-    for(i=0;i<60;i++)printf(" ");printf("    ^^   ÄãºÃ£¡ ^^    \n");
+    for(i=0;i<60;i++)printf(" ");printf("    ^^   ä½ å¥½ï¼ ^^    \n");
     for(i=0;i<60;i++)printf(" ");printf("     *           *     \n");
     for(i=0;i<60;i++)printf(" ");printf("        *     *        \n");
     for(i=0;i<60;i++)printf(" ");printf("           *           \n");
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Ê¹ÓÃĞ¡ĞÍ³¬ÊĞ¹ÜÀíÏµÍ³£¡\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("¡ú1.ÆÕÍ¨ÓÃ»§¹ÜÀí½çÃæ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿ä½¿ç”¨å°å‹è¶…å¸‚ç®¡ç†ç³»ç»Ÿï¼\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("â†’1.æ™®é€šç”¨æˆ·ç®¡ç†ç•Œé¢\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("¡ú2.ÆÕÍ¨¿â´æ¹ÜÀí½çÃæ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("â†’2.æ™®é€šåº“å­˜ç®¡ç†ç•Œé¢\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("¡ú3.ÆÕÍ¨ÏúÊÛ¹ÜÀí½çÃæ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("â†’3.æ™®é€šé”€å”®ç®¡ç†ç•Œé¢\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("¡ú4.ÍË³öÏµÍ³\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("\nÇëÊäÈëÄúÏë³ÌĞòÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<60;i++)printf(" ");printf("â†’4.é€€å‡ºç³»ç»Ÿ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("\nè¯·è¾“å…¥æ‚¨æƒ³ç¨‹åºæ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     return;
 }
 
-int initialize(user_list user_head,commodity_list commodity_head,inventory_list inventory_head)//³õÊ¼»¯
+int initialize(user_list user_head,commodity_list commodity_head,inventory_list inventory_head)//åˆå§‹åŒ–
 {
     int i;
     user_list user_guide,user_first;
     commodity_list commodity_guide;
     inventory_list inventory_guide;
-    for(i=0;i<60;i++)printf(" ");printf("ÕıÔÚ³õÊ¼»¯³ÌĞò\n");
+    for(i=0;i<60;i++)printf(" ");printf("æ­£åœ¨åˆå§‹åŒ–ç¨‹åº\n");
 
     user_guide = (user_list)malloc(sizeof(user_lnode));
     commodity_guide = (commodity_list)malloc(sizeof(commodity_lnode));
@@ -266,38 +267,38 @@ int initialize(user_list user_head,commodity_list commodity_head,inventory_list 
     strcpy(user_first->user,"admin");
     strcpy(user_first->password,"admin");
     strcpy(user_first->type,"administration");
-    user_first->num = 1;//µÚÒ»¸öÓÃ»§µÄ±àºÅ
+    user_first->num = 1;//ç¬¬ä¸€ä¸ªç”¨æˆ·çš„ç¼–å·
 
-    strcpy(user_guide->name,"ÓÃ»§Ãû");
-    strcpy(user_guide->user,"ÕËºÅ");
-    strcpy(user_guide->password,"ÃÜÂë");
-    strcpy(user_guide->type,"ÀàĞÍ");
-    user_guide->num = 1;//ÓÃ»§×ÜÁ¿
+    strcpy(user_guide->name,"ç”¨æˆ·å");
+    strcpy(user_guide->user,"è´¦å·");
+    strcpy(user_guide->password,"å¯†ç ");
+    strcpy(user_guide->type,"ç±»å‹");
+    user_guide->num = 1;//ç”¨æˆ·æ€»é‡
 
-    strcpy(commodity_guide->id,"Ê¶±ğÂë");
-    strcpy(commodity_guide->name,"ÉÌÆ·Ãû³Æ");
-    strcpy(commodity_guide->company,"Éú²úÆóÒµ");
-    strcpy(commodity_guide->type,"ÉÌÆ··ÖÀà");
-    strcpy(commodity_guide->date_manufacture,"Éú²úÈÕÆÚ");
-    strcpy(commodity_guide->date_market,"ÏúÊÛÈÕÆÚ");
-    strcpy(commodity_guide->operator_name,"²Ù×÷Ô±");
-    strcpy(commodity_guide->serial_num,"½»Ò×Á÷Ë®ºÅ");
-    //strcpy(commodity_guide->sell_num,"²Ù×÷Ô±");
-    //strcpy(commodity_guide->pirce_enter,"½ø¼Û");
-    //strcpy(commodity_guide->pirce_sell,"ÏúÊÛ¼Û");
-    //strcpy(commodity_guide->pircr_profit,"ÀûÈó");
-    commodity_guide->num = 0;//Êı¾İ×ÜÁ¿
+    strcpy(commodity_guide->id,"è¯†åˆ«ç ");
+    strcpy(commodity_guide->name,"å•†å“åç§°");
+    strcpy(commodity_guide->company,"ç”Ÿäº§ä¼ä¸š");
+    strcpy(commodity_guide->type,"å•†å“åˆ†ç±»");
+    strcpy(commodity_guide->date_manufacture,"ç”Ÿäº§æ—¥æœŸ");
+    strcpy(commodity_guide->date_market,"é”€å”®æ—¥æœŸ");
+    strcpy(commodity_guide->operator_name,"æ“ä½œå‘˜");
+    strcpy(commodity_guide->serial_num,"äº¤æ˜“æµæ°´å·");
+    //strcpy(commodity_guide->sell_num,"æ“ä½œå‘˜");
+    //strcpy(commodity_guide->pirce_enter,"è¿›ä»·");
+    //strcpy(commodity_guide->pirce_sell,"é”€å”®ä»·");
+    //strcpy(commodity_guide->pircr_profit,"åˆ©æ¶¦");
+    commodity_guide->num = 0;//æ•°æ®æ€»é‡
 
-    strcpy(inventory_guide->id,"Ê¶±ğÂë");
-    strcpy(inventory_guide->name,"ÉÌÆ·Ãû³Æ");
-    strcpy(inventory_guide->company,"Éú²úÆóÒµ");
-    strcpy(inventory_guide->type,"ÉÌÆ··ÖÀà");
-    strcpy(inventory_guide->date_manufacture,"Éú²úÈÕÆÚ");
-    strcpy(inventory_guide->date_keep,"±£ÖÊÆÚ");
-    //strcpy(inventory_guide->quantity,"¿â´æÊıÁ¿");
-    //strcpy(inventory_guide->pirce_enter,"½ø¼Û");
-    //strcpy(inventory_guide->pirce_sell,"½¨ÒéÊÛ¼Û");
-    inventory_guide->num = 0;//Êı¾İ×ÜÁ¿
+    strcpy(inventory_guide->id,"è¯†åˆ«ç ");
+    strcpy(inventory_guide->name,"å•†å“åç§°");
+    strcpy(inventory_guide->company,"ç”Ÿäº§ä¼ä¸š");
+    strcpy(inventory_guide->type,"å•†å“åˆ†ç±»");
+    strcpy(inventory_guide->date_manufacture,"ç”Ÿäº§æ—¥æœŸ");
+    strcpy(inventory_guide->date_keep,"ä¿è´¨æœŸ");
+    //strcpy(inventory_guide->quantity,"åº“å­˜æ•°é‡");
+    //strcpy(inventory_guide->pirce_enter,"è¿›ä»·");
+    //strcpy(inventory_guide->pirce_sell,"å»ºè®®å”®ä»·");
+    inventory_guide->num = 0;//æ•°æ®æ€»é‡
 
     user_head->next = user_guide;
     commodity_head->next = commodity_guide;
@@ -313,14 +314,14 @@ int initialize(user_list user_head,commodity_list commodity_head,inventory_list 
     commodity_save(commodity_head);
     inventory_save(inventory_head);
 
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÀÎ¼ÇÄúµÄ³õÊ¼¹ÜÀíÔ±ÓÃ»§Ãû¼°ÃÜÂë\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÓÃ»§Ãû£ºadmin\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÃÜÂë£ºadmin\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·ç‰¢è®°æ‚¨çš„åˆå§‹ç®¡ç†å‘˜ç”¨æˆ·ååŠå¯†ç \n");
+    for(i=0;i<60;i++)printf(" ");printf("ç”¨æˆ·åï¼šadmin\n");
+    for(i=0;i<60;i++)printf(" ");printf("å¯†ç ï¼šadmin\n");
     system("pause");
     return -1;
 }
 
-void user_load(user_list head) //ÔØÈëÓÃ»§Êı¾İ
+void user_load(user_list head) //è½½å…¥ç”¨æˆ·æ•°æ®
 {
     user_list rear = head,p;
     FILE *fp;
@@ -348,7 +349,7 @@ void user_load(user_list head) //ÔØÈëÓÃ»§Êı¾İ
     fclose(fp);
     return;
 }
-void user_save(user_list head)//´æÈëÓÃ»§Êı¾İµ½´ÅÅÌ
+void user_save(user_list head)//å­˜å…¥ç”¨æˆ·æ•°æ®åˆ°ç£ç›˜
 {
     user_list rear = head->next;
     FILE *fp;
@@ -365,7 +366,7 @@ void user_save(user_list head)//´æÈëÓÃ»§Êı¾İµ½´ÅÅÌ
     return;
 }
 
-void commodity_load(commodity_list head) //ÔØÈëÉÌÆ·Êı¾İ
+void commodity_load(commodity_list head) //è½½å…¥å•†å“æ•°æ®
 {
     commodity_list p,rear = head;
     FILE *fp;
@@ -394,7 +395,7 @@ void commodity_load(commodity_list head) //ÔØÈëÉÌÆ·Êı¾İ
     fclose(fp);
     return;
 }
-void commodity_save(commodity_list head) //´æÈëÉÌÆ·Êı¾İµ½´ÅÅÌ
+void commodity_save(commodity_list head) //å­˜å…¥å•†å“æ•°æ®åˆ°ç£ç›˜
 {
     commodity_list rear = head->next;
     FILE *fp;
@@ -410,7 +411,7 @@ void commodity_save(commodity_list head) //´æÈëÉÌÆ·Êı¾İµ½´ÅÅÌ
     fclose(fp);
     return;
 }
-void inventory_load(inventory_list head) //ÔØÈë¿â´æÊı¾İ
+void inventory_load(inventory_list head) //è½½å…¥åº“å­˜æ•°æ®
 {
     inventory_list p,rear = head;
     FILE *fp;
@@ -440,7 +441,7 @@ void inventory_load(inventory_list head) //ÔØÈë¿â´æÊı¾İ
     fclose(fp);
     return;
 }
-void inventory_save(inventory_list head) //´æÈë¿â´æÊı¾İµ½´ÅÅÌ
+void inventory_save(inventory_list head) //å­˜å…¥åº“å­˜æ•°æ®åˆ°ç£ç›˜
 {
     inventory_list rear = head->next;
     FILE *fp;
@@ -457,28 +458,28 @@ void inventory_save(inventory_list head) //´æÈë¿â´æÊı¾İµ½´ÅÅÌ
     return;
 }
 
-int loading_main(user_list head,user_list mine)//ÓÃ»§Éí·İÊ¶±ğÖ÷º¯Êı 1¡ª¡ª¸ß¼¶¹ÜÀí 2¡ª¡ªÆÕÍ¨ÓÃ»§ -1¡ª¡ªÃÜÂë´íÎó -2¡ª¡ªÓÃ»§²»´æÔÚ
+int loading_main(user_list head,user_list mine)//ç”¨æˆ·èº«ä»½è¯†åˆ«ä¸»å‡½æ•° 1â€”â€”é«˜çº§ç®¡ç† 2â€”â€”æ™®é€šç”¨æˆ· -1â€”â€”å¯†ç é”™è¯¯ -2â€”â€”ç”¨æˆ·ä¸å­˜åœ¨
 {
     user_list p = head->next;
     char printuser[20],printpassword[20];
     int i=1,n;
     n = p->num;
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Ê¹ÓÃĞ¡ĞÍ³¬ÊĞ¹ÜÀíÏµÍ³\n\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊ¹ÓÃÄúµÄÓÃ»§ÃûºÍÃÜÂëµÇÈëÏµÍ³£¡\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÓÃ»§Ãû£º");scanf("%s",printuser);
-    for(i=0;i<60;i++)printf(" ");printf("ÃÜ  Âë£º");scanf("%s",printpassword);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿ä½¿ç”¨å°å‹è¶…å¸‚ç®¡ç†ç³»ç»Ÿ\n\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·ä½¿ç”¨æ‚¨çš„ç”¨æˆ·åå’Œå¯†ç ç™»å…¥ç³»ç»Ÿï¼\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("ç”¨æˆ·åï¼š");scanf("%s",printuser);
+    for(i=0;i<60;i++)printf(" ");printf("å¯†  ç ï¼š");scanf("%s",printpassword);
     printf("\n");
     p = p->next;
     i = 1;
-    while(i<=n&&p)//²éÕÒÕË»§ĞÅÏ¢
+    while(i<=n&&p)//æŸ¥æ‰¾è´¦æˆ·ä¿¡æ¯
     {
         if(strcmp(p->user,printuser)==0)
         {
             if(strcmp(p->password,printpassword)==0)
             {
-                printf("³É¹¦µÇÂ¼£¬ÕıÔÚÊ¶±ğÉí·İ\n");
+                printf("æˆåŠŸç™»å½•ï¼Œæ­£åœ¨è¯†åˆ«èº«ä»½\n");
                 strcpy(mine->name,p->name);
                 strcpy(mine->user,p->user);
                 strcpy(mine->password,p->password);
@@ -495,13 +496,13 @@ int loading_main(user_list head,user_list mine)//ÓÃ»§Éí·İÊ¶±ğÖ÷º¯Êı 1¡ª¡ª¸ß¼¶¹ÜÀ
             }
             else
                 {
-                printf("ÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë\n");
-                printf("ÃÜ  Âë£º");
+                printf("å¯†ç é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n");
+                printf("å¯†  ç ï¼š");
                 scanf("%s",printpassword);
 
                 if(strcmp(p->password,printpassword)==0)
                     {
-                        printf("³É¹¦µÇÂ¼£¬ÕıÔÚÊ¶±ğÉí·İ\n");
+                        printf("æˆåŠŸç™»å½•ï¼Œæ­£åœ¨è¯†åˆ«èº«ä»½\n");
                         strcpy(p->name,mine->name);
                         strcpy(p->user,mine->user);
                         strcpy(p->password,mine->password);
@@ -509,18 +510,18 @@ int loading_main(user_list head,user_list mine)//ÓÃ»§Éí·İÊ¶±ğÖ÷º¯Êı 1¡ª¡ª¸ß¼¶¹ÜÀ
                         mine->num = i;
                         if(strcmp(p->type,"administration")==0)
                             {
-                                printf("×ğ¾´µÄ¸ß¼¶¹ÜÀíÔ±£¬»¶Ó­½øÈëĞ¡ĞÍ³¬ÊĞ¸ß¼¶¹ÜÀíÏµÍ³£¡\n");
+                                printf("å°Šæ•¬çš„é«˜çº§ç®¡ç†å‘˜ï¼Œæ¬¢è¿è¿›å…¥å°å‹è¶…å¸‚é«˜çº§ç®¡ç†ç³»ç»Ÿï¼\n");
                                 return 1;
                             }
                         else
                             {
-                                printf("×ğ¾´µÄÏúÊÛÔ±£¬»¶Ó­½øÈëĞ¡ĞÍ³¬ÊĞÏúÊÛÏµÍ³£¡\n");
+                                printf("å°Šæ•¬çš„é”€å”®å‘˜ï¼Œæ¬¢è¿è¿›å…¥å°å‹è¶…å¸‚é”€å”®ç³»ç»Ÿï¼\n");
                                 return 2;
                             }
                     }
                     else
                     {
-                        printf("¾Ü½ÓµÇÂ¼£¡\n");
+                        printf("æ‹’æ¥ç™»å½•ï¼\n");
                         getchar();
                         return -1;
                     }
@@ -530,27 +531,27 @@ int loading_main(user_list head,user_list mine)//ÓÃ»§Éí·İÊ¶±ğÖ÷º¯Êı 1¡ª¡ª¸ß¼¶¹ÜÀ
         i++;
         p = p->next;
     }
-        printf("\nÓÃ»§²»´æÔÚ£¬¾Ü¾øµÇÈë£¡\n\n\n");
+        printf("\nç”¨æˆ·ä¸å­˜åœ¨ï¼Œæ‹’ç»ç™»å…¥ï¼\n\n\n");
         getchar();
         return -2;
 }
 
-void administration_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine)//¸ß¼¶ÓÃ»§½çÃæ
+void administration_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine)//é«˜çº§ç”¨æˆ·ç•Œé¢
 {
     char sel;
     int i;
     while(1)
     {
-    system("cls");
+    clear_display();
     getchar();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<80;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%20s\n\n",mine->name);
+    for(i=0;i<80;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%20s\n\n",mine->name);
     display_administration();
 
     scanf("%c",&sel);
     if(sel>'9'||sel<'0')
     {
-        printf("ÊäÈë·Ç·¨£¬ÇëÖØĞÂÑ¡Ôñ£¡\n");
+        printf("è¾“å…¥éæ³•ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼\n");
         system("pause");
     }
     else
@@ -573,22 +574,22 @@ void administration_main(user_list user_head,commodity_list commodity_head,inven
     return;
 }
 
-void common_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine)//ÆÕÍ¨ÓÃ»§½çÃæ
+void common_main(user_list user_head,commodity_list commodity_head,inventory_list inventory_head,user_list mine)//æ™®é€šç”¨æˆ·ç•Œé¢
 {
     char sel;
     int i;
     while(1)
     {
-    system("cls");
+    clear_display();
     getchar();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<80;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
+    for(i=0;i<80;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
     display_common();
 
     scanf("%c",&sel);
     if(sel>'9'||sel<'0')
     {
-        printf("ÊäÈë·Ç·¨£¬ÇëÖØĞÂÑ¡Ôñ£¡\n");
+        printf("è¾“å…¥éæ³•ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼\n");
         system("pause");
         continue;
     }
@@ -609,24 +610,24 @@ void common_main(user_list user_head,commodity_list commodity_head,inventory_lis
     }
     return;
 }
-void user_main_administration(user_list user_head,user_list mine)//¸ß¼¶ÓÃ»§½ç¹ÜÀíÃæ
+void user_main_administration(user_list user_head,user_list mine)//é«˜çº§ç”¨æˆ·ç•Œç®¡ç†é¢
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈë¸ß¼¶ÓÃ»§ĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥é«˜çº§ç”¨æˆ·ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("1.Êä³öÈ«²¿ÓÃ»§ĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.Ìí¼ÓĞÂÓÃ»§/¹ÜÀíÔ±\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("3.±ä¸üÓÃ»§Éí·İ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("4.×¢ÏúÓÃ»§\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("5.Êä³öÎÒµÄÕË»§ĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("6.ĞŞ¸ÄÃÜÂë\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³öÓÃ»§ĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<60;i++)printf(" ");printf("1.è¾“å‡ºå…¨éƒ¨ç”¨æˆ·ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.æ·»åŠ æ–°ç”¨æˆ·/ç®¡ç†å‘˜\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("3.å˜æ›´ç”¨æˆ·èº«ä»½\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("4.æ³¨é”€ç”¨æˆ·\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("5.è¾“å‡ºæˆ‘çš„è´¦æˆ·ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("6.ä¿®æ”¹å¯†ç \n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºç”¨æˆ·ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³æ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     scanf("%d",&sel);
     switch(sel)
     {
@@ -655,45 +656,45 @@ void user_main_administration(user_list user_head,user_list mine)//¸ß¼¶ÓÃ»§½ç¹ÜÀ
     return;
 }
 
-void user_main_administration_ergodicity(user_list user_head,user_list mine)//±éÀúÓÃ»§
+void user_main_administration_ergodicity(user_list user_head,user_list mine)//éå†ç”¨æˆ·
 {
     user_list p;
     int i;
     p = user_head->next;
-    system("cls");
-    for(i=0;i<30;i++)printf(" ");printf("ÓÃ»§Çåµ¥\n");
-    printf("%4s%20s%20s%20s\n\n","ĞòºÅ",p->name,p->user,p->type);
+    clear_display();
+    for(i=0;i<30;i++)printf(" ");printf("ç”¨æˆ·æ¸…å•\n");
+    printf("%4s%20s%20s%20s\n\n","åºå·",p->name,p->user,p->type);
     p = p->next;
     while(p)
     {
         printf("%4d%20s%20s",p->num,p->name,p->user);
         if(strcmp(p->type,"administration")==0)
-            printf("%20s\n\n","¹ÜÀíÔ±");
+            printf("%20s\n\n","ç®¡ç†å‘˜");
         else
-            printf("%20s\n\n","ÆÕÍ¨ÓÃ»§");
+            printf("%20s\n\n","æ™®é€šç”¨æˆ·");
 
         p = p->next;
     }
-    for(i=0;i<120;i++)printf(" ");printf("\nµ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("\nå½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
     system("pause");
     return;
 }
 
-void user_main_administration_add(user_list user_head,user_list mine)//Ìí¼ÓĞÂÓÃ»§
+void user_main_administration_add(user_list user_head,user_list mine)//æ·»åŠ æ–°ç”¨æˆ·
 {
     int sel;
     user_list p,rear=user_head->next;
     while(rear->next)
         rear = rear->next;
     p = (user_list)malloc(sizeof(user_lnode));
-    printf("ÇëÊäÈëÄúµÄĞÂÓÃ»§ĞÅÏ¢\n");
-    printf("ĞÕÃû£º");
+    printf("è¯·è¾“å…¥æ‚¨çš„æ–°ç”¨æˆ·ä¿¡æ¯\n");
+    printf("å§“åï¼š");
     scanf("%s",p->name);
-    printf("ÕËºÅ£º");
+    printf("è´¦å·ï¼š");
     scanf("%s",p->user);
-    printf("ÃÜÂë£º");
+    printf("å¯†ç ï¼š");
     scanf("%s",p->password);
-    printf("ÇëÖ¸¶¨ĞÂÓÃ»§³õÊ¼Éí·İ(1.¹ÜÀíÔ± 2.ÆÕÍ¨ÓÃ»§):");
+    printf("è¯·æŒ‡å®šæ–°ç”¨æˆ·åˆå§‹èº«ä»½(1.ç®¡ç†å‘˜ 2.æ™®é€šç”¨æˆ·):");
     scanf("%d",&sel);
     if(sel == 1)
         strcpy(p->type,"administration");
@@ -704,51 +705,51 @@ void user_main_administration_add(user_list user_head,user_list mine)//Ìí¼ÓĞÂÓÃ»
     rear->next = p;
     p->next = NULL;
     user_head->next->num = user_head->next->num+1;
-    printf("¹§Ï²Äú£¡ÄãÊÇ±¾ÏµÍ³µÄµÚ%dÎ»ÓÃ»§£¡\n",p->num);
-    printf("ÄãµÄĞÂÕËºÅĞÅÏ¢Îª£º\n");
-    printf("%4s%20s%20s%20s%20s\n","±àºÅ","ÓÃ»§Ãû","ÕËºÅ","ÃÜÂë","ÓÃ»§ÀàĞÍ");
+    printf("æ­å–œæ‚¨ï¼ä½ æ˜¯æœ¬ç³»ç»Ÿçš„ç¬¬%dä½ç”¨æˆ·ï¼\n",p->num);
+    printf("ä½ çš„æ–°è´¦å·ä¿¡æ¯ä¸ºï¼š\n");
+    printf("%4s%20s%20s%20s%20s\n","ç¼–å·","ç”¨æˆ·å","è´¦å·","å¯†ç ","ç”¨æˆ·ç±»å‹");
     printf("%10d%20s%20s%20s",p->num,p->name,p->user,p->password);
     if(strcmp(p->type,"administration")==0)
-        printf("%20s\n","¹ÜÀíÔ±");
+        printf("%20s\n","ç®¡ç†å‘˜");
     else
-        printf("%20s\n","ÆÕÍ¨ÓÃ»§");
+        printf("%20s\n","æ™®é€šç”¨æˆ·");
     user_save(user_head);
     system("pause");
     return;
 }
-void user_main_administration_rank(user_list user_head,user_list mine)//Éí·İĞŞ¸Ä
+void user_main_administration_rank(user_list user_head,user_list mine)//èº«ä»½ä¿®æ”¹
 {
     int sel,sum;
     user_list p = user_head->next;
     sum = p->num;
-    printf("µ±Ç°È«²¿ÓÃ»§ĞÅÏ¢ÈçÏÂ£º\n");
+    printf("å½“å‰å…¨éƒ¨ç”¨æˆ·ä¿¡æ¯å¦‚ä¸‹ï¼š\n");
     user_main_administration_ergodicity(user_head,mine);
-    printf("\nÇëÊäÈëÄúÏë±ä¸üÉí·İÕËºÅµÄ±àºÅ£º");
+    printf("\nè¯·è¾“å…¥æ‚¨æƒ³å˜æ›´èº«ä»½è´¦å·çš„ç¼–å·ï¼š");
     scanf("%d",&sel);
     if(sel>sum)
     {
-        printf("¶Ô²»Æğ£¡ÊäÈëĞòºÅÎŞĞ§£¡\n");
+        printf("å¯¹ä¸èµ·ï¼è¾“å…¥åºå·æ— æ•ˆï¼\n");
         return;
     }
     if(sel==mine->num)
     {
-        printf("¶Ô²»Æğ£¡±¾ÏµÍ³²»ÔÊĞíµ±Ç°ÓÃ»§ĞŞ¸Äµ±Ç°ÓÃ»§Éí·İ£¡\n");
+        printf("å¯¹ä¸èµ·ï¼æœ¬ç³»ç»Ÿä¸å…è®¸å½“å‰ç”¨æˆ·ä¿®æ”¹å½“å‰ç”¨æˆ·èº«ä»½ï¼\n");
         system("pause");
         return;
     }
     while(sel--)
         p = p->next;
 
-    printf("µ±Ç°ÓÃ»§Éí·İÎª:  ");
+    printf("å½“å‰ç”¨æˆ·èº«ä»½ä¸º:  ");
     if(strcmp(p->type,"administration")==0)
-        printf("%s\n","¹ÜÀíÔ±");
+        printf("%s\n","ç®¡ç†å‘˜");
     else
-        printf("%s\n","ÆÕÍ¨ÓÃ»§");
-    printf("\nÊÇ·ñÈ·ÈÏĞŞ¸Ä(1.È·ÈÏ 2.È¡ÏûĞŞ¸Ä)¸ÃÓÃ»§Îª£º");
+        printf("%s\n","æ™®é€šç”¨æˆ·");
+    printf("\næ˜¯å¦ç¡®è®¤ä¿®æ”¹(1.ç¡®è®¤ 2.å–æ¶ˆä¿®æ”¹)è¯¥ç”¨æˆ·ä¸ºï¼š");
     if(strcmp(p->type,"common")==0)
-        printf("%s\n","¹ÜÀíÔ±");
+        printf("%s\n","ç®¡ç†å‘˜");
     else
-        printf("%s\n","ÆÕÍ¨ÓÃ»§");
+        printf("%s\n","æ™®é€šç”¨æˆ·");
         scanf("%d",&sel);
         if(sel == 1)
                 if(strcmp(p->type,"administration")==0)
@@ -757,34 +758,34 @@ void user_main_administration_rank(user_list user_head,user_list mine)//Éí·İĞŞ¸Ä
                     strcpy(p->type,"administration");
         else
         {
-            printf("²Ù×÷ÒÑÈ¡Ïû£¡\n");
+            printf("æ“ä½œå·²å–æ¶ˆï¼\n");
             system("pause");
             return;
         }
-            printf("Éí·İ±ä¸ü³É¹¦£¡\n");
+            printf("èº«ä»½å˜æ›´æˆåŠŸï¼\n");
             system("pause");
         return;
 
 }
-void user_main_administration_delete(user_list user_head,user_list mine)//×¢ÏúÓÃ»§
+void user_main_administration_delete(user_list user_head,user_list mine)//æ³¨é”€ç”¨æˆ·
 {
     int sel,sum,sel2,i=0;
     user_list prior,p = user_head->next;
     sum = p->num;
     prior = p;
-    printf("µ±Ç°È«²¿ÓÃ»§ĞÅÏ¢ÈçÏÂ£º\n");
+    printf("å½“å‰å…¨éƒ¨ç”¨æˆ·ä¿¡æ¯å¦‚ä¸‹ï¼š\n");
     user_main_administration_ergodicity(user_head,mine);
-    printf("\nÇëÊäÈëÄúÏë×¢ÏúÕËºÅµÄ±àºÅ£º");
+    printf("\nè¯·è¾“å…¥æ‚¨æƒ³æ³¨é”€è´¦å·çš„ç¼–å·ï¼š");
     scanf("%d",&sel);
     if(sel>sum)
     {
-        printf("¶Ô²»Æğ£¡ÊäÈëĞòºÅÎŞĞ§£¡\n");
+        printf("å¯¹ä¸èµ·ï¼è¾“å…¥åºå·æ— æ•ˆï¼\n");
         system("pause");
         return;
     }
     if(sel==mine->num)
     {
-        printf("¶Ô²»Æğ£¡±¾ÏµÍ³²»ÔÊĞíµ±Ç°ÓÃ»§×¢Ïúµ±Ç°ÓÃ»§£¡\n");
+        printf("å¯¹ä¸èµ·ï¼æœ¬ç³»ç»Ÿä¸å…è®¸å½“å‰ç”¨æˆ·æ³¨é”€å½“å‰ç”¨æˆ·ï¼\n");
         system("pause");
         return;
     }
@@ -794,14 +795,14 @@ void user_main_administration_delete(user_list user_head,user_list mine)//×¢ÏúÓÃ
             p = p->next;
             i++;
         }
-    printf("Ô¤±¸×¢ÏúÓÃ»§µÄĞÅÏ¢Îª£º\n");
-    printf("%4s%20s%20s%20s%20s\n","±àºÅ","ÓÃ»§Ãû","ÕËºÅ","ÃÜÂë","ÓÃ»§ÀàĞÍ");
+    printf("é¢„å¤‡æ³¨é”€ç”¨æˆ·çš„ä¿¡æ¯ä¸ºï¼š\n");
+    printf("%4s%20s%20s%20s%20s\n","ç¼–å·","ç”¨æˆ·å","è´¦å·","å¯†ç ","ç”¨æˆ·ç±»å‹");
     printf("%10d%20s%20s%20s",p->num,p->name,p->user,p->password);
     if(strcmp(p->type,"administration")==0)
-        printf("%20s\n","¹ÜÀíÔ±");
+        printf("%20s\n","ç®¡ç†å‘˜");
     else
-        printf("%20s\n","ÆÕÍ¨ÓÃ»§");
-    printf("È·ÈÏ×¢ÏúÂğ£¿£¨1.È·ÈÏ 2.È¡Ïû£©: ");
+        printf("%20s\n","æ™®é€šç”¨æˆ·");
+    printf("ç¡®è®¤æ³¨é”€å—ï¼Ÿï¼ˆ1.ç¡®è®¤ 2.å–æ¶ˆï¼‰: ");
     scanf("%d",&sel2);
     if(sel2 == 1)
     {
@@ -820,23 +821,23 @@ void user_main_administration_delete(user_list user_head,user_list mine)//×¢ÏúÓÃ
         }
 
     user_save(user_head);
-    printf("×¢Ïú¸ÃÕËºÅ³É¹¦£¡\n");
+    printf("æ³¨é”€è¯¥è´¦å·æˆåŠŸï¼\n");
     system("pause");
     return;
 }
-void user_main_administration_mine(user_list user_head,user_list mine)//ÎÒµÄĞÅÏ¢
+void user_main_administration_mine(user_list user_head,user_list mine)//æˆ‘çš„ä¿¡æ¯
 {
-    printf("ÎÒµÄ±àºÅ£º%4d\nÎÒµÄĞÕÃû£º%20s\nÎÒµÄÕËºÅ£º%20s\nÎÒµÄÉí·İ£º",mine->num,mine->name,mine->user);
+    printf("æˆ‘çš„ç¼–å·ï¼š%4d\næˆ‘çš„å§“åï¼š%20s\næˆ‘çš„è´¦å·ï¼š%20s\næˆ‘çš„èº«ä»½ï¼š",mine->num,mine->name,mine->user);
     if(strcmp(mine->type,"administration")==0)
-        printf("%20s\n","¹ÜÀíÔ±");
+        printf("%20s\n","ç®¡ç†å‘˜");
     else
-        printf("%20s\n","ÆÕÍ¨ÓÃ»§");
+        printf("%20s\n","æ™®é€šç”¨æˆ·");
     system("pause");
     return;
 }
-void user_main_administration_revamp(user_list user_head,user_list mine)//ĞŞ¸ÄÎÒµÄÃÜÂë
+void user_main_administration_revamp(user_list user_head,user_list mine)//ä¿®æ”¹æˆ‘çš„å¯†ç 
 {
-    user_list p = user_head->next->next;//Ìø¹ıÇ°µ¼
+    user_list p = user_head->next->next;//è·³è¿‡å‰å¯¼
     char pass[20];
     int i,n,sel;
     n = mine->num;
@@ -846,53 +847,53 @@ void user_main_administration_revamp(user_list user_head,user_list mine)//ĞŞ¸ÄÎÒ
         p = p->next;
         i++;
     }
-    printf("ÇëÊäÈëÄúµ±Ç°µÄÃÜÂë£º");
+    printf("è¯·è¾“å…¥æ‚¨å½“å‰çš„å¯†ç ï¼š");
     scanf("%s",pass);
     if(strcmp(pass,mine->password)==0)
     {
-        printf("ÇëÊäÈëÄúµÄĞÂÃÜÂë£º");
+        printf("è¯·è¾“å…¥æ‚¨çš„æ–°å¯†ç ï¼š");
         scanf("%s",mine->password);
         if(strcmp(mine->password,p->password)==0)
         {
-            system("cls");
-            printf("ĞÂÃÜÂëÓë¾ÉÃÜÂëÒ»ÖÂ£¬ĞŞ¸ÄÊ§°Ü£¡\n");
+            clear_display();
+            printf("æ–°å¯†ç ä¸æ—§å¯†ç ä¸€è‡´ï¼Œä¿®æ”¹å¤±è´¥ï¼\n");
             return;
         }
-        printf("ÄúµÄĞÂÃÜÂëÎª£º%s\n",mine->password);
-        printf("È·ÈÏĞŞ¸Ä£¨1.È·ÈÏ 2.È¡Ïû£©£¿");
+        printf("æ‚¨çš„æ–°å¯†ç ä¸ºï¼š%s\n",mine->password);
+        printf("ç¡®è®¤ä¿®æ”¹ï¼ˆ1.ç¡®è®¤ 2.å–æ¶ˆï¼‰ï¼Ÿ");
         scanf("%d",&sel);
         if(sel == 1)
             strcpy(p->password,mine->password);
         else
             return;
         system("pause");
-        system("cls");
-        printf("ÇëÀÎ¼ÇÄúµÄĞÂÃÜÂë£¡\n");
+        clear_display();
+        printf("è¯·ç‰¢è®°æ‚¨çš„æ–°å¯†ç ï¼\n");
         system("pause");
         user_save(user_head);
         return;
     }
     else
     {
-        printf("ÄúµÄÊäÈëÓĞÎó£¡ĞŞ¸ÄÃÜÂëÊ§°Ü£¡\n");
+        printf("æ‚¨çš„è¾“å…¥æœ‰è¯¯ï¼ä¿®æ”¹å¯†ç å¤±è´¥ï¼\n");
         system("pause");
     }
     return;
 }
 
-void user_main_common(user_list user_head,user_list mine)//ÆÕÍ¨ÓÃ»§¹ÜÀí½çÃæ
+void user_main_common(user_list user_head,user_list mine)//æ™®é€šç”¨æˆ·ç®¡ç†ç•Œé¢
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈëÓÃ»§ĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.Êä³öÎÒµÄÕË»§ĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.ĞŞ¸ÄÃÜÂë\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³öÓÃ»§ĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥ç”¨æˆ·ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.è¾“å‡ºæˆ‘çš„è´¦æˆ·ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.ä¿®æ”¹å¯†ç \n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºç”¨æˆ·ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³æ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     scanf("%d",&sel);
     switch(sel)
     {
@@ -909,26 +910,26 @@ void user_main_common(user_list user_head,user_list mine)//ÆÕÍ¨ÓÃ»§¹ÜÀí½çÃæ
     return;
 }
 
-void inventory_main_administration(inventory_list inventory_head,user_list mine)//¸ß¼¶¿â´æÇé¿öÖ÷º¯Êı
+void inventory_main_administration(inventory_list inventory_head,user_list mine)//é«˜çº§åº“å­˜æƒ…å†µä¸»å‡½æ•°
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     inventory_main_administration_de_weight(inventory_head,mine);
     inventory_save(inventory_head);
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈë¸ß¼¶¿â´æÇé¿ö¹ÜÀí³ÌĞò\n\n");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥é«˜çº§åº“å­˜æƒ…å†µç®¡ç†ç¨‹åº\n\n");
 
-    for(i=0;i<60;i++)printf(" ");printf("1.Êä³öÈ«²¿¿â´æÉÌÆ·ĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.¿â´æ½ø»õµÇ¼Ç\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("3.ĞŞ¸Ä»õÆ·ĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("4.¿â´æÉÌÆ·ĞÅÏ¢²éÕÒ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("5.ÅúÁ¿½ø»õ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("6.Íâ²¿µ¼Èë¿â´æĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¿â´æĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<60;i++)printf(" ");printf("1.è¾“å‡ºå…¨éƒ¨åº“å­˜å•†å“ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.åº“å­˜è¿›è´§ç™»è®°\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("3.ä¿®æ”¹è´§å“ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("4.åº“å­˜å•†å“ä¿¡æ¯æŸ¥æ‰¾\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("5.æ‰¹é‡è¿›è´§\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("6.å¤–éƒ¨å¯¼å…¥åº“å­˜ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºåº“å­˜ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³æ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     scanf("%d",&sel);
     switch(sel)
     {
@@ -958,22 +959,22 @@ void inventory_main_administration(inventory_list inventory_head,user_list mine)
     return;
 }
 
-void inventory_main_administration_ergodicity(inventory_list inventory_head,user_list mine)//±éÀú¿â´æĞÅÏ¢
+void inventory_main_administration_ergodicity(inventory_list inventory_head,user_list mine)//éå†åº“å­˜ä¿¡æ¯
 {
     inventory_list p;
     int sum,i=0;
-    system("cls");
+    clear_display();
     p = inventory_head->next;
     sum = p->num;
     if(sum<=0)
     {
         for(i=0;i<15;i++)printf("\n");
-        printf("\n¿â´æÊı¾İ¿âÄÚµ±Ç°Ã»ÓĞ¿â´æĞÅÏ¢£¬ÇëÄú½ø»õ»òÕßÂ¼ÈëÊı¾İ£¡\n");
+        printf("\nåº“å­˜æ•°æ®åº“å†…å½“å‰æ²¡æœ‰åº“å­˜ä¿¡æ¯ï¼Œè¯·æ‚¨è¿›è´§æˆ–è€…å½•å…¥æ•°æ®ï¼\n");
         system("pause");
         return;
     }
-    for(i=0;i<80;i++)printf(" ");printf("¿â´æÇåµ¥\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
+    for(i=0;i<80;i++)printf(" ");printf("åº“å­˜æ¸…å•\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
     p = p->next;
     while(p)
     {
@@ -981,14 +982,14 @@ void inventory_main_administration_ergodicity(inventory_list inventory_head,user
         p = p->next;
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
 
-void inventory_main_administration_printfi(inventory_list inventory_head,int num)//Êä³ö¿â´æ±íÖĞi´¦µÄĞÅÏ¢
+void inventory_main_administration_printfi(inventory_list inventory_head,int num)//è¾“å‡ºåº“å­˜è¡¨ä¸­iå¤„çš„ä¿¡æ¯
 {
-    inventory_list p = inventory_head->next;//Ìø¹ıÇ°µ¼
+    inventory_list p = inventory_head->next;//è·³è¿‡å‰å¯¼
     while(num--)
     {
         p = p->next;
@@ -996,7 +997,7 @@ void inventory_main_administration_printfi(inventory_list inventory_head,int num
         printf("%-6d%-15s%-30s%-30s%-10s%-20s%-12s%-15d%-15.2lf%-30.2lf\n",p->num,p->id,p->name,p->company,p->type,p->date_manufacture,p->date_keep,p->quantity,p->pirce_enter,p->pirce_sell);
     return;
 }
-void inventory_main_administration_add(inventory_list inventory_head,user_list mine)//Èë¿â
+void inventory_main_administration_add(inventory_list inventory_head,user_list mine)//å…¥åº“
 {
     char ch[30];
     int quanlity;
@@ -1010,84 +1011,84 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
     while(1)
     {
     p = (inventory_list)malloc(sizeof(inventory_lnode));
-    printf("µ±ÄúÊäÈë-1Ê±Í£Ö¹Èë¿â£¡\n");
-    printf("ÇëÊäÈëÈë¿âÉÌÆ·µÄ13Î»Ê¶±ğÂë£º");
+    printf("å½“æ‚¨è¾“å…¥-1æ—¶åœæ­¢å…¥åº“ï¼\n");
+    printf("è¯·è¾“å…¥å…¥åº“å•†å“çš„13ä½è¯†åˆ«ç ï¼š");
     scanf("%s",ch);
     if(strcmp(ch,"-1")==0) return;
     if(strlen(ch)>13&&strlen(ch)<13)
     {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÈë¿âÉÌÆ·µÄ13Î»Ê¶±ğÂë£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥å…¥åº“å•†å“çš„13ä½è¯†åˆ«ç ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>13&&strlen(ch)<13)
         {
-            printf("¶Ô²»Æğ£¡Èë¿âÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     strcpy(p->id,ch);
 
-    printf("ÇëÊäÈëÉÌÆ·ĞÕÃû£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+    printf("è¯·è¾“å…¥å•†å“å§“åï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>30&&strlen(ch)<1)
     {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·ĞÕÃû£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“å§“åï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<1)
         {
-            printf("¶Ô²»Æğ£¡Èë¿âÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     strcpy(p->name,ch);
 
-    printf("ÇëÊäÈëÉÌÆ·Éú²úÆóÒµÃû£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+    printf("è¯·è¾“å…¥å•†å“ç”Ÿäº§ä¼ä¸šåï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>30&&strlen(ch)<1)
     {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·Éú²úÆóÒµÃû£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“ç”Ÿäº§ä¼ä¸šåï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<1)
         {
-            printf("¶Ô²»Æğ£¡Èë¿âÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     strcpy(p->company,ch);
 
-    printf("ÇëÊäÈëÉÌÆ··ÖÀà£¨¿ØÖÆÔÚ5Î»ºº×Ö»ò10Î»Ó¢ÎÄ£©£º");
+    printf("è¯·è¾“å…¥å•†å“åˆ†ç±»ï¼ˆæ§åˆ¶åœ¨5ä½æ±‰å­—æˆ–10ä½è‹±æ–‡ï¼‰ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>10&&strlen(ch)<1)
     {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·ÉÌÆ··ÖÀà£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“å•†å“åˆ†ç±»ï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>10&&strlen(ch)<1)
         {
-            printf("¶Ô²»Æğ£¡Èë¿âÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     strcpy(p->type,ch);
 
-    printf("ÇëÊäÈëÉÌÆ·Éú²úÈÕÆÚ£¨¸ñÊ½£ºxxxx.xx.xx£©£º");
+    printf("è¯·è¾“å…¥å•†å“ç”Ÿäº§æ—¥æœŸï¼ˆæ ¼å¼ï¼šxxxx.xx.xxï¼‰ï¼š");
     scanf("%s",ch);
     sscanf(ch,"%4s%*1s%2s%*1s%2s",y,m,d);
     if(strcmp(y,"2050")>0||strcmp(y,"1970")<0||strcmp(m,"01")<0||strcmp(m,"12")>0||strcmp(d,"01")<0||strcmp(d,"31")>0)
     {
-        printf("ÊäÈë·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·Éú²úÈÕÆÚ£¨¸ñÊ½£ºxxxx.xx.xx£©£º");
+        printf("è¾“å…¥éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“ç”Ÿäº§æ—¥æœŸï¼ˆæ ¼å¼ï¼šxxxx.xx.xxï¼‰ï¼š");
         scanf("%s",ch);
         sscanf(ch,"%4s%*1s%2s%*1s%2s",y,m,d);
         if(strcmp(y,"2050")>0||strcmp(y,"1970")<0||strcmp(m,"01")<0||strcmp(m,"12")>0||strcmp(d,"01")<0||strcmp(d,"31")>0)
         {
-            printf("¶Ô²»Æğ£¡ÊäÈë·Ç·¨£¡Èë¿âÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼è¾“å…¥éæ³•ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
@@ -1099,76 +1100,76 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
     strcat(p->date_manufacture,d);
     strcat(p->date_manufacture,".");
 
-    printf("ÇëÊäÈëÉÌÆ·±£ÖÊÆÚ£¨¸ñÊ½£ºÓÀ¾Ãor xxÔÂ£©£º");
+    printf("è¯·è¾“å…¥å•†å“ä¿è´¨æœŸï¼ˆæ ¼å¼ï¼šæ°¸ä¹…or xxæœˆï¼‰ï¼š");
     scanf("%s",ch);
     if(strcmp(ch,"0")<=0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·±£ÖÊÆÚ£¨¸ñÊ½£ºÓÀ¾Ãor xxÔÂ£©£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“ä¿è´¨æœŸï¼ˆæ ¼å¼ï¼šæ°¸ä¹…or xxæœˆï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"0")<=0)
         {
-            printf("Êı¾İÒì³££¡Èë¿âÊ§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     strcpy(p->date_keep,ch);
 
-    printf("ÇëÊäÈëÉÌÆ·Èë¿âÁ¿£¨µ¥Î»£º¼ş£©£º");
+    printf("è¯·è¾“å…¥å•†å“å…¥åº“é‡ï¼ˆå•ä½ï¼šä»¶ï¼‰ï¼š");
     scanf("%d",&quanlity);
     if(quanlity<0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·Èë¿âÁ¿£¨µ¥Î»£º¼ş£©£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“å…¥åº“é‡ï¼ˆå•ä½ï¼šä»¶ï¼‰ï¼š");
         scanf("%d",&quanlity);
         if(quanlity<0)
         {
-            printf("Êı¾İÒì³££¡Èë¿âÊ§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     p->quantity = quanlity;
 
-    printf("ÇëÊäÈëÉÌÆ·½ø¼Û£¨¸ñÊ½£ºxx£¨Í³Ò»ÈËÃñ±Ò²¢ÒÔ¡°Ôª¡±Îª¼ÆÁ¿µ¥Î»£©£©£º");
+    printf("è¯·è¾“å…¥å•†å“è¿›ä»·ï¼ˆæ ¼å¼ï¼šxxï¼ˆç»Ÿä¸€äººæ°‘å¸å¹¶ä»¥â€œå…ƒâ€ä¸ºè®¡é‡å•ä½ï¼‰ï¼‰ï¼š");
     scanf("%lf",&price);
     if(price<0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·½ø¼Û£¨¸ñÊ½£ºxx£¨Í³Ò»ÈËÃñ±Ò²¢ÒÔ¡°Ôª¡±Îª¼ÆÁ¿µ¥Î»£©£©£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“è¿›ä»·ï¼ˆæ ¼å¼ï¼šxxï¼ˆç»Ÿä¸€äººæ°‘å¸å¹¶ä»¥â€œå…ƒâ€ä¸ºè®¡é‡å•ä½ï¼‰ï¼‰ï¼š");
         scanf("%lf",&price);
         if(price<0)
         {
-            printf("Êı¾İÒì³££¡Èë¿âÊ§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     p->pirce_enter = price;
 
-    printf("ÇëÊäÈëÉÌÆ·½¨ÒéÁãÊÛ¼Û£¨¸ñÊ½£ºxx£¨Í³Ò»ÈËÃñ±Ò²¢ÒÔ¡°Ôª¡±Îª¼ÆÁ¿µ¥Î»£©£©£º");
+    printf("è¯·è¾“å…¥å•†å“å»ºè®®é›¶å”®ä»·ï¼ˆæ ¼å¼ï¼šxxï¼ˆç»Ÿä¸€äººæ°‘å¸å¹¶ä»¥â€œå…ƒâ€ä¸ºè®¡é‡å•ä½ï¼‰ï¼‰ï¼š");
     scanf("%lf",&price);
     if(price<0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·½¨ÒéÁãÊÛ¼Û£¨¸ñÊ½£ºxx£¨Í³Ò»ÈËÃñ±Ò²¢ÒÔ¡°Ôª¡±Îª¼ÆÁ¿µ¥Î»£©£©£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“å»ºè®®é›¶å”®ä»·ï¼ˆæ ¼å¼ï¼šxxï¼ˆç»Ÿä¸€äººæ°‘å¸å¹¶ä»¥â€œå…ƒâ€ä¸ºè®¡é‡å•ä½ï¼‰ï¼‰ï¼š");
         scanf("%lf",&price);
         if(price<0)
         {
-            printf("Êı¾İÒì³££¡Èë¿âÊ§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     if(price < p->pirce_enter||price<0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÊÛ¼ÛĞ¡ÓÚ½ø¼Û£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·½¨ÒéÁãÊÛ¼Û£¨¸ñÊ½£ºxx£¨Í³Ò»ÈËÃñ±Ò²¢ÒÔ¡°Ôª¡±Îª¼ÆÁ¿µ¥Î»£©£©£º");
+        printf("è¾“å…¥éæ³•ï¼å”®ä»·å°äºè¿›ä»·ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“å»ºè®®é›¶å”®ä»·ï¼ˆæ ¼å¼ï¼šxxï¼ˆç»Ÿä¸€äººæ°‘å¸å¹¶ä»¥â€œå…ƒâ€ä¸ºè®¡é‡å•ä½ï¼‰ï¼‰ï¼š");
         scanf("%lf",&price);
         if(price < p->pirce_enter||price<0)
         {
-            printf("Êı¾İÒì³££¡Èë¿âÊ§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼å…¥åº“å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
@@ -1183,7 +1184,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
     inventory_save(inventory_head);
     }
 }
-void inventory_main_administration_revamp(inventory_list inventory_head,user_list mine)//ĞŞ¸ÄÉÌÆ·ĞÅÏ¢
+void inventory_main_administration_revamp(inventory_list inventory_head,user_list mine)//ä¿®æ”¹å•†å“ä¿¡æ¯
 {
     inventory_list p,b,guide;
     double ch_double;
@@ -1191,26 +1192,26 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
     char ch[30],y[5],m[4],d[4];
     while(1)
     {
-    guide = inventory_head->next;//Ç°µ¼
+    guide = inventory_head->next;//å‰å¯¼
     p = inventory_head->next;
     b = inventory_head;
     sum = p->num;
-    system("cls");
-    printf("ÇëÊäÈëÄúÏëÒªĞŞ¸ÄµÄÉÌÆ·±àºÅ£¨¿ÉÍ¨¹ı²éÕÒ¹¦ÄÜÈ·¶¨ÉÌÆ·±àºÅ£ºÊäÈë-1ÍË³ö£©£º");
+    clear_display();
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è¦ä¿®æ”¹çš„å•†å“ç¼–å·ï¼ˆå¯é€šè¿‡æŸ¥æ‰¾åŠŸèƒ½ç¡®å®šå•†å“ç¼–å·ï¼šè¾“å…¥-1é€€å‡ºï¼‰ï¼š");
     scanf("%d",&num);
     if(num>sum&&num<0)
     {
-        printf("ÊäÈëÓĞÎó£¬ĞŞ¸ÄÊ§°Ü£¡\n");
+        printf("è¾“å…¥æœ‰è¯¯ï¼Œä¿®æ”¹å¤±è´¥ï¼\n");
         system("pause");
         return;
     }
     if(num == -1) return;
     while(1)
     {
-    printf("¸ÃĞòºÅÖ¸ÏòµÄÉÌÆ·ĞÅÏ¢ÈçÏÂ£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
-    printf("¿ªÊ¼ĞŞ¸Ä£¿£¨1.È·ÈÏ 2.È¡Ïû£©");
+    printf("è¯¥åºå·æŒ‡å‘çš„å•†å“ä¿¡æ¯å¦‚ä¸‹ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
+    printf("å¼€å§‹ä¿®æ”¹ï¼Ÿï¼ˆ1.ç¡®è®¤ 2.å–æ¶ˆï¼‰");
     scanf("%d",&sel);
     if(sel==2)return;
     i = num;
@@ -1222,240 +1223,240 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         p = p->next;
     }
     for(i=0;i<5;i++)printf("\n");
-        for(i=0;i<50;i++)printf(" ");printf("²Ù×÷Çåµ¥£º\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("1.ĞŞ¸ÄÉÌÆ·Ãû\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("2.ĞŞ¸ÄÉú²úÆóÒµÃû\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("3.ĞŞ¸ÄÉÌÆ··ÖÀà\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("4.ĞŞ¸ÄÉú²úÈÕÆÚ\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("5.ĞŞ¸Ä±£ÖÊÆÚ\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("6.ĞŞ¸Ä¿â´æÁ¿\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("7.ĞŞ¸ÄÉÌÆ·½ø¼Û\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("8.ĞŞ¸ÄÉÌÆ·½¨ÒéÁãÊÛ¼Û\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("9.É¾³ıµ±Ç°ÉÌÆ·¿â´æĞÅÏ¢\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¸Ã²Ù×÷³ÌĞò\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÒªÖ´ĞĞ²Ù×÷µÄ´úÂë£º");
+        for(i=0;i<50;i++)printf(" ");printf("æ“ä½œæ¸…å•ï¼š\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("1.ä¿®æ”¹å•†å“å\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("2.ä¿®æ”¹ç”Ÿäº§ä¼ä¸šå\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("3.ä¿®æ”¹å•†å“åˆ†ç±»\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("4.ä¿®æ”¹ç”Ÿäº§æ—¥æœŸ\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("5.ä¿®æ”¹ä¿è´¨æœŸ\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("6.ä¿®æ”¹åº“å­˜é‡\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("7.ä¿®æ”¹å•†å“è¿›ä»·\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("8.ä¿®æ”¹å•†å“å»ºè®®é›¶å”®ä»·\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("9.åˆ é™¤å½“å‰å•†å“åº“å­˜ä¿¡æ¯\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºè¯¥æ“ä½œç¨‹åº\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³è¦æ‰§è¡Œæ“ä½œçš„ä»£ç ï¼š");
         scanf("%d",&sel);
     switch(sel)
     {
     case 1:
-        printf("µ±Ç°ÉÌÆ·Ãû³ÆÎª£º%s\n",p->name);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Ãû£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“åç§°ä¸ºï¼š%s\n",p->name);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)
             continue;
         strcpy(p->name,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 2:
-        printf("µ±Ç°ÉÌÆ·Éú²úÆóÒµÃû³ÆÎª£º%s\n",p->company);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Ãû£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“ç”Ÿäº§ä¼ä¸šåç§°ä¸ºï¼š%s\n",p->company);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
 
         if(strlen(ch)>30&&strlen(ch)<3)
         {
-        printf("ÊäÈë×Ö·û¹ı³¤£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Ãû³Æ£¨ÄÚÈİ¿ØÖÆÔÚ1~15×Ö£©£º");
+        printf("è¾“å…¥å­—ç¬¦è¿‡é•¿ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥ä¿®æ”¹åçš„å•†å“åç§°ï¼ˆå†…å®¹æ§åˆ¶åœ¨1~15å­—ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<3)
         {
-            printf("¶Ô²»Æğ£¡ĞŞ¸ÄÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼ä¿®æ”¹å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
         }
         strcpy(p->company,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 3:
-        printf("µ±Ç°ÉÌÆ··ÖÀàÎª£º%s\n",p->type);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ··ÖÀà£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“åˆ†ç±»ä¸ºï¼š%s\n",p->type);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åˆ†ç±»ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
         if(strlen(ch)>30&&strlen(ch)<1)
         {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·Éú²úÆóÒµÃû£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“ç”Ÿäº§ä¼ä¸šåï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<1)
         {
-            printf("¶Ô²»Æğ£¡ĞŞ¸ÄÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼ä¿®æ”¹å¤±è´¥ï¼\n");
             system("pause");
             return;
         }
         }
         strcpy(p->type,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 4:
-        printf("µ±Ç°ÉÌÆ·Éú²úÈÕÆÚÎª£º%s\n",p->date_manufacture);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Éú²úÈÕÆÚ£¨¸ñÊ½£ºxxxx.xx.xx;ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“ç”Ÿäº§æ—¥æœŸä¸ºï¼š%s\n",p->date_manufacture);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“ç”Ÿäº§æ—¥æœŸï¼ˆæ ¼å¼ï¼šxxxx.xx.xx;è¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
         sscanf(ch,"%4s%*1s%2s%*1s%2s",y,m,d);
     if(strcmp(y,"2050")>0||strcmp(y,"1970")<0||strcmp(m,"01")<0||strcmp(m,"12")>0||strcmp(d,"01")<0||strcmp(d,"31")>0)
     {
-        printf("ÊäÈë·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·Éú²úÈÕÆÚ£¨¸ñÊ½£ºxxxx.xx.xx£©£º");
+        printf("è¾“å…¥éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“ç”Ÿäº§æ—¥æœŸï¼ˆæ ¼å¼ï¼šxxxx.xx.xxï¼‰ï¼š");
         scanf("%s",ch);
         sscanf(ch,"%4s%*1s%2s%*1s%2s",y,m,d);
         if(strcmp(y,"2050")>0||strcmp(y,"1970")<0||strcmp(m,"01")<0||strcmp(m,"12")>0||strcmp(d,"01")<0||strcmp(d,"31")>0)
         {
-            printf("¶Ô²»Æğ£¡ÊäÈë·Ç·¨£¡²Ù×÷Ê§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼è¾“å…¥éæ³•ï¼æ“ä½œå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     strcat(p->date_manufacture,y);
-    strcat(p->date_manufacture,"Äê");
+    strcat(p->date_manufacture,"å¹´");
     strcat(p->date_manufacture,m);
-    strcat(p->date_manufacture,"ÔÂ");
+    strcat(p->date_manufacture,"æœˆ");
     strcat(p->date_manufacture,d);
-    strcat(p->date_manufacture,"ÈÕ");
+    strcat(p->date_manufacture,"æ—¥");
         strcpy(p->date_manufacture,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 5:
-        printf("µ±Ç°ÉÌÆ·±£ÖÊÆÚÎª£º%s\n",p->date_keep);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·±£ÖÊÆÚ£¨¸ñÊ½£ºÓÀ¾Ãor xxÔÂ;ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“ä¿è´¨æœŸä¸ºï¼š%s\n",p->date_keep);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“ä¿è´¨æœŸï¼ˆæ ¼å¼ï¼šæ°¸ä¹…or xxæœˆ;è¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
         if(strcmp(ch,"0")<=0)
         {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·±£ÖÊÆÚ£¨¸ñÊ½£ºÓÀ¾Ãor xxÔÂ£©£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“ä¿è´¨æœŸï¼ˆæ ¼å¼ï¼šæ°¸ä¹…or xxæœˆï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"0")<=0)
         {
-            printf("Êı¾İÒì³££¡²Ù×÷Ê§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼æ“ä½œå¤±è´¥ï¼\n");
             return;
         }
         }
         strcpy(p->date_keep,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 6:
-        printf("µ±Ç°ÉÌÆ·¿â´æÁ¿Îª£º%d\n",p->quantity);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·¿â´æÁ¿£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“åº“å­˜é‡ä¸ºï¼š%d\n",p->quantity);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åº“å­˜é‡ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%d",&ch_int);
         if(ch_int==-1)continue;
         if(ch_int<0)
         {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·¿â´æÁ¿£¨µ¥Î»£º¼ş£©£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“åº“å­˜é‡ï¼ˆå•ä½ï¼šä»¶ï¼‰ï¼š");
         scanf("%d",&ch_int);
         if(ch_int<0)
         {
-            printf("Êı¾İÒì³££¡²Ù×÷Ê§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼æ“ä½œå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
         }
         p->quantity = ch_int;
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 7:
-        printf("µ±Ç°ÉÌÆ·½ø¼ÛÎª£º%.2lf\n",p->pirce_enter);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄ½ø¼Û£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“è¿›ä»·ä¸ºï¼š%.2lf\n",p->pirce_enter);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„è¿›ä»·ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%lf",&ch_double);
         if(ch_double==-1)continue;
         if(ch_double<0)
         {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·½ø¼Û:");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“è¿›ä»·:");
         scanf("%lf",&ch_double);
         if(ch_double<0)
         {
-            printf("Êı¾İÒì³££¡²Ù×÷Ê§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼æ“ä½œå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
         }
         p->pirce_enter = ch_double;
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 8:
-        printf("µ±Ç°ÉÌÆ·½¨ÒéÊÛ¼Û£º%.2lf\n",p->pirce_sell);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·½¨ÒéÊÛ¼Û£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“å»ºè®®å”®ä»·ï¼š%.2lf\n",p->pirce_sell);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“å»ºè®®å”®ä»·ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%lf",&ch_double);
         if(ch_double==-1)continue;
 
         if(ch_double<0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·½¨ÒéÁãÊÛ¼Û£º");
+        printf("è¾“å…¥éæ³•ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“å»ºè®®é›¶å”®ä»·ï¼š");
         scanf("%lf",&ch_double);
         if(ch_double<0)
         {
-            printf("Êı¾İÒì³££¡²Ù×÷Ê§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼æ“ä½œå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     if(ch_double < p->pirce_enter||ch_double<0)
     {
-        printf("ÊäÈë·Ç·¨£¡ÊÛ¼ÛĞ¡ÓÚ½ø¼Û£¡ÇëÖØĞÂÊäÈë£¡\n");
-        printf("ÇëÊäÈëÉÌÆ·½¨ÒéÁãÊÛ¼Û£º");
+        printf("è¾“å…¥éæ³•ï¼å”®ä»·å°äºè¿›ä»·ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+        printf("è¯·è¾“å…¥å•†å“å»ºè®®é›¶å”®ä»·ï¼š");
         scanf("%lf",&ch_double);
         if(ch_double < p->pirce_enter||ch_double<0)
         {
-            printf("Êı¾İÒì³££¡²Ù×÷Ê§°Ü£¡\n");
+            printf("æ•°æ®å¼‚å¸¸ï¼æ“ä½œå¤±è´¥ï¼\n");
             return;
         }
     }
     p->pirce_sell = ch_double;
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         inventory_save(inventory_head);
         system("pause");
         continue;
     case 9:
-        printf("È·ÈÏÉ¾³ı£¿£¨1.È·ÈÏ 2.È¡Ïû£©");
+        printf("ç¡®è®¤åˆ é™¤ï¼Ÿï¼ˆ1.ç¡®è®¤ 2.å–æ¶ˆï¼‰");
         scanf("%d",&sel);
         if(sel==2)return;
         b->next = p->next;
@@ -1467,7 +1468,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
             p = p->next;
         }
         guide->num = guide->num-1;
-        printf("É¾³ı³É¹¦£¡\n");
+        printf("åˆ é™¤æˆåŠŸï¼\n");
         inventory_save(inventory_head);
         system("pause");
             continue;
@@ -1477,24 +1478,24 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
     }
     }
 }
-void inventory_main_administration_find(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ
+void inventory_main_administration_find(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾
 {
     inventory_list p;
     int sel,i,answer;
     while(1)
     {
     p = inventory_head->next;
-    system("cls");
-    for(i=0;i<50;i++)printf(" ");printf("ÉÌÆ·ÌØÕ÷´úÂë£º\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.Ê¶±ğÂë\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.ÉÌÆ·Ãû³Æ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("3.Éú²úÆóÒµ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("4.ÉÌÆ··ÖÀà\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("5.Éú²úÈÕÆÚÇø¼ä\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("6.°´×îĞ¡¿â´æÁ¿\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("7.°´×îµÍ½ø¼Û\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö²éÕÒ³ÌĞò\n\n");
-    for(i=0;i<40;i++)printf(" ");printf("ÇëÊäÈëÄúÏë²éÕÒµÄÉÌÆ·ÌØÕ÷´úÂë£º");
+    clear_display();
+    for(i=0;i<50;i++)printf(" ");printf("å•†å“ç‰¹å¾ä»£ç ï¼š\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.è¯†åˆ«ç \n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.å•†å“åç§°\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("3.ç”Ÿäº§ä¼ä¸š\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("4.å•†å“åˆ†ç±»\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("5.ç”Ÿäº§æ—¥æœŸåŒºé—´\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("6.æŒ‰æœ€å°åº“å­˜é‡\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("7.æŒ‰æœ€ä½è¿›ä»·\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºæŸ¥æ‰¾ç¨‹åº\n\n");
+    for(i=0;i<40;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„å•†å“ç‰¹å¾ä»£ç ï¼š");
     scanf("%d",&sel);
         switch(sel)
     {
@@ -1502,14 +1503,14 @@ void inventory_main_administration_find(inventory_list inventory_head,user_list 
         answer = inventory_main_administration_find_id(inventory_head,mine);
         if(answer == 0)
             {
-            printf("¶Ô²»Æğ£¬Î´ÕÒµ½´ËÉÌÆ·£¡\n");
+            printf("å¯¹ä¸èµ·ï¼Œæœªæ‰¾åˆ°æ­¤å•†å“ï¼\n");
             continue;
             }
-        printf("¸ÃÌØÕ÷ÂëÖ¸ÏòµÄÉÌÆ·ĞÅÏ¢ÈçÏÂ£º\n");
-        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-        inventory_main_administration_printfi(inventory_head,answer);//Êä³öi´¦µÄĞÅÏ¢
+        printf("è¯¥ç‰¹å¾ç æŒ‡å‘çš„å•†å“ä¿¡æ¯å¦‚ä¸‹ï¼š\n");
+        printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+        inventory_main_administration_printfi(inventory_head,answer);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
         continue;
     case 2:
@@ -1536,20 +1537,20 @@ void inventory_main_administration_find(inventory_list inventory_head,user_list 
     }
     return;
 }
-int inventory_main_administration_find_id(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´Ê¶±ğÂë
+int inventory_main_administration_find_id(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰è¯†åˆ«ç 
 {
     char ch[20];
-    inventory_list p = inventory_head->next->next;//Ìø¹ıÇ°µ¼
-    printf("ÇëÊäÈëÄúÏë²éÕÒµÄÉÌÆ·µÄ13Î»ÌØÕ÷Âë£º");
+    inventory_list p = inventory_head->next->next;//è·³è¿‡å‰å¯¼
+    printf("è¯·è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„å•†å“çš„13ä½ç‰¹å¾ç ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>13&&strlen(ch)<13)
     {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÄúÏë²éÕÒµÄÉÌÆ·µÄ13Î»Ê¶±ğÂë£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„å•†å“çš„13ä½è¯†åˆ«ç ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>13&&strlen(ch)<13)
         {
-            printf("¶Ô²»Æğ£¡²éÕÒÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼æŸ¥æ‰¾å¤±è´¥ï¼\n");
             system("pause");
             return 0;
         }
@@ -1562,31 +1563,31 @@ int inventory_main_administration_find_id(inventory_list inventory_head,user_lis
     }
     return 0;
 }
-void inventory_main_administration_find_name(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´Ãû³Æ
+void inventory_main_administration_find_name(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰åç§°
 {
     int like,i,j,len,len2,answer;
     char ch[30];
     inventory_list p;
     p = inventory_head->next;
     answer = 0;
-    printf("ÇëÊäÈëÓûËÑË÷µÄÉÌÆ·Ãû³Æ£¨¿ØÖÆËÑË÷ÄÚÈİÔÚ3~15×Ö£©£º");
+    printf("è¯·è¾“å…¥æ¬²æœç´¢çš„å•†å“åç§°ï¼ˆæ§åˆ¶æœç´¢å†…å®¹åœ¨3~15å­—ï¼‰ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>30&&strlen(ch)<3)
     {
-        printf("ÊäÈë×Ö·û¹ı³¤£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÓûËÑË÷µÄÉÌÆ·Ãû³Æ£¨¿ØÖÆËÑË÷ÄÚÈİÔÚ3~15×Ö£©£º");
+        printf("è¾“å…¥å­—ç¬¦è¿‡é•¿ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥æ¬²æœç´¢çš„å•†å“åç§°ï¼ˆæ§åˆ¶æœç´¢å†…å®¹åœ¨3~15å­—ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<3)
         {
-            printf("¶Ô²»Æğ£¡²éÕÒÔªËØÖ¸¶¨Ê§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼æŸ¥æ‰¾å…ƒç´ æŒ‡å®šå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     len = strlen(ch);
-    printf("ÎªÄúÕÒµ½ÈçÏÂÉÌÆ·£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    p = p->next;//Ìø¹ıÇ°µ¼
+    printf("ä¸ºæ‚¨æ‰¾åˆ°å¦‚ä¸‹å•†å“ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    p = p->next;//è·³è¿‡å‰å¯¼
     while(p)
     {
         like = 0;
@@ -1608,39 +1609,39 @@ void inventory_main_administration_find_name(inventory_list inventory_head,user_
     }
     if(answer==0)
         {
-            system("cls");
-            printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½·ûºÏÄúÒªÇóµÄÉÌÆ·£¡\n");
+            clear_display();
+            printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ‚¨è¦æ±‚çš„å•†å“ï¼\n");
         }
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
     return;
 }
-void inventory_main_administration_find_company(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´Éú²úÆóÒµ
+void inventory_main_administration_find_company(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰ç”Ÿäº§ä¼ä¸š
 {
     int like,i,j,len,len2,answer;
     char ch[30];
     inventory_list p;
     p = inventory_head->next;
     answer = 0;
-    printf("ÇëÊäÈëÓûËÑË÷ÉÌÆ·µÄÉú²úÆóÒµÃû³Æ£¨¿ØÖÆËÑË÷ÄÚÈİÔÚ3~15×Ö£©£º");
+    printf("è¯·è¾“å…¥æ¬²æœç´¢å•†å“çš„ç”Ÿäº§ä¼ä¸šåç§°ï¼ˆæ§åˆ¶æœç´¢å†…å®¹åœ¨3~15å­—ï¼‰ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>30&&strlen(ch)<3)
     {
-        printf("ÊäÈë×Ö·û¹ı³¤£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÓûËÑË÷ÉÌÆ·µÄÉú²úÆóÒµÃû³Æ£¨¿ØÖÆËÑË÷ÄÚÈİÔÚ3~15×Ö£©£º");
+        printf("è¾“å…¥å­—ç¬¦è¿‡é•¿ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥æ¬²æœç´¢å•†å“çš„ç”Ÿäº§ä¼ä¸šåç§°ï¼ˆæ§åˆ¶æœç´¢å†…å®¹åœ¨3~15å­—ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<3)
         {
-            printf("¶Ô²»Æğ£¡²éÕÒÔªËØÖ¸¶¨Ê§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼æŸ¥æ‰¾å…ƒç´ æŒ‡å®šå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     len = strlen(ch);
-    printf("ÎªÄúÕÒµ½ÈçÏÂÉÌÆ·£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    p = p->next;//Ìø¹ıÇ°µ¼
+    printf("ä¸ºæ‚¨æ‰¾åˆ°å¦‚ä¸‹å•†å“ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    p = p->next;//è·³è¿‡å‰å¯¼
     while(p)
     {
         like = 0;
@@ -1662,39 +1663,39 @@ void inventory_main_administration_find_company(inventory_list inventory_head,us
     }
     if(answer==0)
         {
-            system("cls");
-            printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½·ûºÏÄúÒªÇóµÄÉÌÆ·£¡\n");
+            clear_display();
+            printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ‚¨è¦æ±‚çš„å•†å“ï¼\n");
         }
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
     return;
 }
-void inventory_main_administration_find_type(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´ÉÌÆ··ÖÀà
+void inventory_main_administration_find_type(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰å•†å“åˆ†ç±»
 {
     int like,i,j,len,len2,answer;
     char ch[30];
     inventory_list p;
     p = inventory_head->next;
     answer = 0;
-    printf("ÇëÊäÈëÓûËÑË÷ÉÌÆ·µÄÀàĞÍ£¨¿ØÖÆËÑË÷ÄÚÈİÔÚ2~8×Ö£©£º");
+    printf("è¯·è¾“å…¥æ¬²æœç´¢å•†å“çš„ç±»å‹ï¼ˆæ§åˆ¶æœç´¢å†…å®¹åœ¨2~8å­—ï¼‰ï¼š");
     scanf("%s",ch);
     if(strlen(ch)>16&&strlen(ch)<3)
     {
-        printf("ÊäÈë×Ö·û¹ı³¤£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÓûËÑË÷ÉÌÆ·µÄÀàĞÍ£¨¿ØÖÆËÑË÷ÄÚÈİÔÚ2~8×Ö£©£º");
+        printf("è¾“å…¥å­—ç¬¦è¿‡é•¿ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥æ¬²æœç´¢å•†å“çš„ç±»å‹ï¼ˆæ§åˆ¶æœç´¢å†…å®¹åœ¨2~8å­—ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>16&&strlen(ch)<3)
         {
-            printf("¶Ô²»Æğ£¡²éÕÒÔªËØÖ¸¶¨Ê§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼æŸ¥æ‰¾å…ƒç´ æŒ‡å®šå¤±è´¥ï¼\n");
             system("pause");
             return;
         }
     }
     len = strlen(ch);
-    printf("ÎªÄúÕÒµ½ÈçÏÂÉÌÆ·£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    p = p->next;//Ìø¹ıÇ°µ¼
+    printf("ä¸ºæ‚¨æ‰¾åˆ°å¦‚ä¸‹å•†å“ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    p = p->next;//è·³è¿‡å‰å¯¼
     while(p)
     {
         like = 0;
@@ -1716,30 +1717,30 @@ void inventory_main_administration_find_type(inventory_list inventory_head,user_
     }
     if(answer==0)
         {
-            system("cls");
-            printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½·ûºÏÄúÒªÇóµÄÉÌÆ·£¡\n");
+            clear_display();
+            printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ‚¨è¦æ±‚çš„å•†å“ï¼\n");
         }
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
     return;
 }
-void inventory_main_administration_find_manufacture(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´Éú²úÈÕÆÚ
+void inventory_main_administration_find_manufacture(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰ç”Ÿäº§æ—¥æœŸ
 {
     inventory_list p;
     p = inventory_head->next;
     int answer,i;
     char y1[5],y2[5],m1[5],m2[5],d1[5],d2[5],y[5],m[5],d[5];
-    printf("ÇëÊäÈëÄúÏë²éÕÒµÄÉÌÆ·Éú²úÈÕÆÚÇø¼ä£¨ÏŞ¶ÈÎª1970Äê1ÔÂ1ÈÕÖÁ½ñ£©£º\n");
-    printf("Ê¼ÓÚ    Äê£º\b\b\b\b\b\b\b\b");scanf("%s",y1);
-    printf("  ÔÂ£º\b\b\b\b\b\b");scanf("%s",m1);
-    printf("  ÈÕ£º\b\b\b\b\b\b");scanf("%s",d1);
-    printf("ÖÕÓÚ    Äê£º\b\b\b\b\b\b\b\b");scanf("%s",y2);
-    printf("  ÔÂ£º\b\b\b\b\b\b");scanf("%s",m2);
-    printf("  ÈÕ£º\b\b\b\b\b\b");scanf("%s",d2);
-    printf("ÎªÄúÕÒµ½ÈçÏÂÉÌÆ·£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    p = p->next;//Ìø¹ıÇ°µ¼
+    printf("è¯·è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„å•†å“ç”Ÿäº§æ—¥æœŸåŒºé—´ï¼ˆé™åº¦ä¸º1970å¹´1æœˆ1æ—¥è‡³ä»Šï¼‰ï¼š\n");
+    printf("å§‹äº    å¹´ï¼š\b\b\b\b\b\b\b\b");scanf("%s",y1);
+    printf("  æœˆï¼š\b\b\b\b\b\b");scanf("%s",m1);
+    printf("  æ—¥ï¼š\b\b\b\b\b\b");scanf("%s",d1);
+    printf("ç»ˆäº    å¹´ï¼š\b\b\b\b\b\b\b\b");scanf("%s",y2);
+    printf("  æœˆï¼š\b\b\b\b\b\b");scanf("%s",m2);
+    printf("  æ—¥ï¼š\b\b\b\b\b\b");scanf("%s",d2);
+    printf("ä¸ºæ‚¨æ‰¾åˆ°å¦‚ä¸‹å•†å“ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    p = p->next;//è·³è¿‡å‰å¯¼
     while(p)
     {
         sscanf(p->date_manufacture,"%4s%*1s%2s%*1s%2s",y,m,d);
@@ -1795,24 +1796,24 @@ void inventory_main_administration_find_manufacture(inventory_list inventory_hea
     if(answer==0)
     {
         system("pause");
-        printf("¶Ô²»Æğ£¡Ã»ÓĞÕÒµ½·ûºÏÄúÒªÇóµÄÉÌÆ·£¡\n");
+        printf("å¯¹ä¸èµ·ï¼æ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ‚¨è¦æ±‚çš„å•†å“ï¼\n");
         return;
     }
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
     return;
 }
-void inventory_main_administration_find_quantity(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´¿â´æÁ¿
+void inventory_main_administration_find_quantity(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰åº“å­˜é‡
 {
     inventory_list p;
     int i,sel,answer = 0;
     p = inventory_head->next;
-    printf("ÇëÊäÈëÄúÏë²éÕÒµÄÉÌÆ·µÄ¿â´æ×îĞ¡Öµ£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„å•†å“çš„åº“å­˜æœ€å°å€¼ï¼š");
     scanf("%d",&sel);
-    printf("ÎªÄúÕÒµ½ÈçÏÂÉÌÆ·£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    p = p->next;//Ìø¹ıÇ°µ¼
+    printf("ä¸ºæ‚¨æ‰¾åˆ°å¦‚ä¸‹å•†å“ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    p = p->next;//è·³è¿‡å‰å¯¼
     while(p)
     {
         if(p->quantity>=sel)
@@ -1825,24 +1826,24 @@ void inventory_main_administration_find_quantity(inventory_list inventory_head,u
     if(answer==0)
     {
         system("pause");
-        printf("¶Ô²»Æğ£¡Ã»ÓĞÕÒµ½·ûºÏÄúÒªÇóµÄÉÌÆ·£¡\n");
+        printf("å¯¹ä¸èµ·ï¼æ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ‚¨è¦æ±‚çš„å•†å“ï¼\n");
         return;
     }
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
     return;
 }
-void inventory_main_administration_find_pirce(inventory_list inventory_head,user_list mine)//ÉÌÆ·²éÕÒ-°´½ø¼ÛÇø¼ä
+void inventory_main_administration_find_pirce(inventory_list inventory_head,user_list mine)//å•†å“æŸ¥æ‰¾-æŒ‰è¿›ä»·åŒºé—´
 {
     inventory_list p;
     int i,sel,answer = 0;
     p = inventory_head->next;
-    printf("ÇëÊäÈëÄúÏë²éÕÒµÄÉÌÆ·µÄ½ø¼Û×îĞ¡Öµ£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„å•†å“çš„è¿›ä»·æœ€å°å€¼ï¼š");
     scanf("%d",&sel);
-    printf("ÎªÄúÕÒµ½ÈçÏÂÉÌÆ·£º\n");
-    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",p->id,p->name,p->company,p->type,p->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
-    p = p->next;//Ìø¹ıÇ°µ¼
+    printf("ä¸ºæ‚¨æ‰¾åˆ°å¦‚ä¸‹å•†å“ï¼š\n");
+    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",p->id,p->name,p->company,p->type,p->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
+    p = p->next;//è·³è¿‡å‰å¯¼
     while(p)
     {
         if(p->pirce_enter>=sel)
@@ -1855,16 +1856,16 @@ void inventory_main_administration_find_pirce(inventory_list inventory_head,user
     if(answer==0)
     {
         system("pause");
-        printf("¶Ô²»Æğ£¡Ã»ÓĞÕÒµ½·ûºÏÄúÒªÇóµÄÉÌÆ·£¡\n");
+        printf("å¯¹ä¸èµ·ï¼æ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ‚¨è¦æ±‚çš„å•†å“ï¼\n");
         return;
     }
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
     return;
 }
 
-void inventory_main_administration_adds(inventory_list inventory_head,user_list mine)//ÅúÁ¿Èë¿â
+void inventory_main_administration_adds(inventory_list inventory_head,user_list mine)//æ‰¹é‡å…¥åº“
 {
     inventory_list p,rear;
     char ch[30];
@@ -1873,8 +1874,8 @@ void inventory_main_administration_adds(inventory_list inventory_head,user_list 
     rear = inventory_head;
     while(rear->next)
         rear = rear->next;
-    printf("ÇëÄúÑÏ¸ñ°´ÕÕÒÔÏÂ¸ñÊ½ÒªÇóÊäÈëÊı¾İ£¬²¢ÒÔ-1½áÊø£¡\n");
-    printf("%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-10s\n","13Î»Ê¶±ğÂë","15Î»Ãû³Æ","15Î»Éú²úÉÌ","5Î»ÀàĞÍ","XXXX.xx.xx","±£ÖÊÆÚ","¿â´æ¼şÊı","½ø¼Û","½¨ÒéÊÛ¼Û");
+    printf("è¯·æ‚¨ä¸¥æ ¼æŒ‰ç…§ä»¥ä¸‹æ ¼å¼è¦æ±‚è¾“å…¥æ•°æ®ï¼Œå¹¶ä»¥-1ç»“æŸï¼\n");
+    printf("%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-10s\n","13ä½è¯†åˆ«ç ","15ä½åç§°","15ä½ç”Ÿäº§å•†","5ä½ç±»å‹","XXXX.xx.xx","ä¿è´¨æœŸ","åº“å­˜ä»¶æ•°","è¿›ä»·","å»ºè®®å”®ä»·");
     while(scanf("%s",ch),strcmp(ch,"-1")!=0)
     {
         p = (inventory_list)malloc(sizeof(inventory_lnode));
@@ -1887,19 +1888,19 @@ void inventory_main_administration_adds(inventory_list inventory_head,user_list 
     }
     rear->next = NULL;
     inventory_save(inventory_head);
-    printf("ÅúÁ¿Èë¿â³É¹¦£¬ÒÔÏÂÎªÈë¿âºóµÄ¿â´æĞÅÏ¢£º\n");
+    printf("æ‰¹é‡å…¥åº“æˆåŠŸï¼Œä»¥ä¸‹ä¸ºå…¥åº“åçš„åº“å­˜ä¿¡æ¯ï¼š\n");
     inventory_main_administration_ergodicity(inventory_head,mine);
 
 }
-void inventory_main_administration_de_weight(inventory_list inventory_head,user_list mine)//¿â´æÖØ¸´ĞÅÏ¢´¦Àí
+void inventory_main_administration_de_weight(inventory_list inventory_head,user_list mine)//åº“å­˜é‡å¤ä¿¡æ¯å¤„ç†
 {
     inventory_list a,b,c,d;
     if(inventory_head->next->next!=NULL)
-    a = inventory_head->next->next;//Ö¸ÏòÊ×¸ö°üº¬ĞÅÏ¢µÄÁ´±í
+    a = inventory_head->next->next;//æŒ‡å‘é¦–ä¸ªåŒ…å«ä¿¡æ¯çš„é“¾è¡¨
     else
         return;
     if(inventory_head->next->next->next!=NULL)
-    b = inventory_head->next->next->next;//Ö¸ÏòµÚ¶ş¸ö°üº¬ĞÅÏ¢µÄÁ´±í
+    b = inventory_head->next->next->next;//æŒ‡å‘ç¬¬äºŒä¸ªåŒ…å«ä¿¡æ¯çš„é“¾è¡¨
     else
         return;
     c = a;
@@ -1934,15 +1935,15 @@ void inventory_main_administration_de_weight(inventory_list inventory_head,user_
     return;
 }
 
-void inventory_main_administration_adds_file(inventory_list inventory_head,user_list mine)//ÅúÁ¿µ¼Èë¿â´æÊı¾İ
+void inventory_main_administration_adds_file(inventory_list inventory_head,user_list mine)//æ‰¹é‡å¯¼å…¥åº“å­˜æ•°æ®
 {
     inventory_list p,rear;
     FILE *fp;
     rear = inventory_head;
     while(rear->next)
         rear = rear->next;
-    printf("ÇëÊ¹ÓÃÅäÌ×¿â´æ¹ÜÀíÏµÍ³Ö¸¶¨¸ñÊ½½«·ûºÏÒªÇóµÄÊı¾İÎÄ¼şÖØÃüÃûÎªADD Inventory information.dat,²¢½«Êı¾İÎÄ¼ş·ÅÔÚ³ÌĞòÔ´Ä¿Â¼£¡\n");
-    printf("Íê³ÉÈ«²¿¹¤×÷Çë¼ÌĞø£º\n");
+    printf("è¯·ä½¿ç”¨é…å¥—åº“å­˜ç®¡ç†ç³»ç»ŸæŒ‡å®šæ ¼å¼å°†ç¬¦åˆè¦æ±‚çš„æ•°æ®æ–‡ä»¶é‡å‘½åä¸ºADD Inventory information.dat,å¹¶å°†æ•°æ®æ–‡ä»¶æ”¾åœ¨ç¨‹åºæºç›®å½•ï¼\n");
+    printf("å®Œæˆå…¨éƒ¨å·¥ä½œè¯·ç»§ç»­ï¼š\n");
     system("pause");
     fp = fopen("ADD Inventory information.dat","r");
     if(fp == NULL)
@@ -1965,23 +1966,23 @@ void inventory_main_administration_adds_file(inventory_list inventory_head,user_
     }
     rear->next=NULL;
     inventory_save(inventory_head);
-    printf("ÅúÁ¿µ¼Èë¿â´æÊı¾İ³É¹¦£¡\n");
+    printf("æ‰¹é‡å¯¼å…¥åº“å­˜æ•°æ®æˆåŠŸï¼\n");
     inventory_main_administration_ergodicity(inventory_head,mine);
     return;
 }
-void inventory_main_common(inventory_list inventory_head,user_list mine)//ÆÕÍ¨¿â´æÇé¿öÖ÷º¯Êı
+void inventory_main_common(inventory_list inventory_head,user_list mine)//æ™®é€šåº“å­˜æƒ…å†µä¸»å‡½æ•°
 {
         int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈë¿â´æÇé¿ö²éÑ¯³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.Êä³öÈ«²¿¿â´æÉÌÆ·ĞÅÏ¢\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.¿â´æÉÌÆ·ĞÅÏ¢²éÕÒ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¿â´æĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥åº“å­˜æƒ…å†µæŸ¥è¯¢ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.è¾“å‡ºå…¨éƒ¨åº“å­˜å•†å“ä¿¡æ¯\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.åº“å­˜å•†å“ä¿¡æ¯æŸ¥æ‰¾\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºåº“å­˜ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³æ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
 
     scanf("%d",&sel);
     switch(sel)
@@ -2001,23 +2002,23 @@ void inventory_main_common(inventory_list inventory_head,user_list mine)//ÆÕÍ¨¿â
 }
 
 
-void commodity_main_administration(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//¸ß¼¶ÏúÊÛÖ÷º¯Êı
+void commodity_main_administration(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//é«˜çº§é”€å”®ä¸»å‡½æ•°
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈë¸ß¼¶ÉÌÆ·ÏúÊÛÏµÍ³\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.²éÑ¯ÉÌÆ·&ÏúÊÛ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.ÉÌÆ·ÏúÊÛ³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("3.ÓÃ»§ÍË»õ³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("4.ÏúÊÛ¼ÇÂ¼µ÷È¡\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("5.ÏúÊÛ¼ÇÂ¼ĞŞ¸Ä\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("6.ÏúÊÛ¼ÇÂ¼·ÖÎö\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¿â´æĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏë³ÌĞòÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥é«˜çº§å•†å“é”€å”®ç³»ç»Ÿ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.æŸ¥è¯¢å•†å“&é”€å”®\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.å•†å“é”€å”®ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("3.ç”¨æˆ·é€€è´§ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("4.é”€å”®è®°å½•è°ƒå–\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("5.é”€å”®è®°å½•ä¿®æ”¹\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("6.é”€å”®è®°å½•åˆ†æ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºåº“å­˜ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç¨‹åºæ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
 
     scanf("%d",&sel);
     switch(sel)
@@ -2061,20 +2062,20 @@ void commodity_main_administration(inventory_list inventory_head,commodity_list 
     return;
 }
 
-void commodity_main_administration_find(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//²éÑ¯ÓëÏúÊÛ
+void commodity_main_administration_find(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//æŸ¥è¯¢ä¸é”€å”®
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈëÏúÊÛÏµÍ³²éÑ¯ÏúÊÛ½çÃæ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.¿â´æ±éÀú\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.¿â´æ²éÑ¯\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("3.ÉÌÆ·ÏúÊÛ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³öÉÌÆ·²éÑ¯½çÃæ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏë³ÌĞòÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥é”€å”®ç³»ç»ŸæŸ¥è¯¢é”€å”®ç•Œé¢\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.åº“å­˜éå†\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.åº“å­˜æŸ¥è¯¢\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("3.å•†å“é”€å”®\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºå•†å“æŸ¥è¯¢ç•Œé¢\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç¨‹åºæ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
 
     scanf("%d",&sel);
     switch(sel)
@@ -2094,28 +2095,28 @@ void commodity_main_administration_find(inventory_list inventory_head,commodity_
     }
     return;
 }
-void commodity_main_administration_sell(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//ÏúÊÛ³ÌĞò
+void commodity_main_administration_sell(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//é”€å”®ç¨‹åº
 {
     time_t rawtime;
     struct tm *timeinfo;
     commodity_list commodity,p;
     inventory_list inventory,guide;
     char ch[20],serial[12],ni[30];
-    int find,sel,num,len,i,j,a,fa,answer,gi=0;//fa-²éÕÒ½á¹û ÕÒµ½Öµ¸³Îª1 gi¡ª¡ª±íÍ·Êä³ö´ÎÊı
+    int find,sel,num,len,i,j,a,fa,answer,gi=0;//fa-æŸ¥æ‰¾ç»“æœ æ‰¾åˆ°å€¼èµ‹ä¸º1 giâ€”â€”è¡¨å¤´è¾“å‡ºæ¬¡æ•°
     double price;
     char op[20];
-    guide = inventory_head->next;//¼ÇÂ¼¿â´æĞÅÏ¢Ç°µ¼
-    commodity = commodity_head->next;//Ìø¹ıÇ°µ¼
+    guide = inventory_head->next;//è®°å½•åº“å­˜ä¿¡æ¯å‰å¯¼
+    commodity = commodity_head->next;//è·³è¿‡å‰å¯¼
     while(commodity->next)
         commodity = commodity->next;
 
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈëÏúÊÛÏµÍ³ÏúÊÛ½çÃæ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÖ´ĞĞµÄ²Ù×÷´úÂë£¨1.¹ºÎï 2.ÍË³ö£©£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥é”€å”®ç³»ç»Ÿé”€å”®ç•Œé¢\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³æ‰§è¡Œçš„æ“ä½œä»£ç ï¼ˆ1.è´­ç‰© 2.é€€å‡ºï¼‰ï¼š");
     scanf("%d",&sel);
     if(sel == 2)
         break;
@@ -2141,10 +2142,10 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
     while(1)
     {
         len = 0;
-        inventory = inventory_head->next->next;//Ìø¹ıÇ°µ¼
+        inventory = inventory_head->next->next;//è·³è¿‡å‰å¯¼
         p = (commodity_list)malloc(sizeof(commodity_lnode));
         fa = 0;
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÏúÊÛÉÌÆ·µÄ¿â´æ´úÂë»òÕß13Î»Ê¶±ğÂë£¨ÊäÈë-1½áÊøÉÌÆ·Ñ¡¹º£©£º");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥é”€å”®å•†å“çš„åº“å­˜ä»£ç æˆ–è€…13ä½è¯†åˆ«ç ï¼ˆè¾“å…¥-1ç»“æŸå•†å“é€‰è´­ï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)
             break;
@@ -2157,7 +2158,7 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
             {
                 if(gi==0)
                 {
-                    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
+                    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
                     gi++;
                 }
                 fa = 1;
@@ -2183,15 +2184,15 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
             if(strcmp(ni,ch)<0)
             {
                 printf("%s %s\n",ni,ch);
-                printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
+                printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
                 system("pause");
                 continue;
             }
-            //¿¼ÂÇ±àºÅÊäÈëÓĞÎóµÄÇé¿ö
+            //è€ƒè™‘ç¼–å·è¾“å…¥æœ‰è¯¯çš„æƒ…å†µ
 
             if(gi==0)
                 {
-                    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","±àºÅ",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"±£ÖÊÆÚ£¨ÔÂ£©","¿â´æ£¨¼ş£©","½ø¼Û£¨Ôª£©","½¨ÒéÊÛ¼Û£¨Ôª£©");
+                    printf("%-6s%-15s%-30s%-30s%-10s%-20s%-12s%-15s%-15s%-15s\n","ç¼–å·",guide->id,guide->name,guide->company,guide->type,guide->date_manufacture,"ä¿è´¨æœŸï¼ˆæœˆï¼‰","åº“å­˜ï¼ˆä»¶ï¼‰","è¿›ä»·ï¼ˆå…ƒï¼‰","å»ºè®®å”®ä»·ï¼ˆå…ƒï¼‰");
                     gi++;
                 }
                 fa = 1;
@@ -2202,23 +2203,23 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
         }
         if(fa==0)
         {
-            printf("¶Ô²»Æğ£¬Ã»ÓĞ²éÑ¯µ½Ïà¹ØÉÌÆ·ĞÅÏ¢£¬ÇëÖØĞÂÊäÈë£¡\n\n");
-            printf("ÇëÊäÈëÏúÊÛÉÌÆ·µÄ¿â´æ´úÂë»òÕß13Î»Ê¶±ğÂë£¨ÊäÈë-1½áÊøÉÌÆ·Ñ¡¹º£©£º");
+            printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æŸ¥è¯¢åˆ°ç›¸å…³å•†å“ä¿¡æ¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n\n");
+            printf("è¯·è¾“å…¥é”€å”®å•†å“çš„åº“å­˜ä»£ç æˆ–è€…13ä½è¯†åˆ«ç ï¼ˆè¾“å…¥-1ç»“æŸå•†å“é€‰è´­ï¼‰ï¼š");
             continue;
         }
-        printf("ÇëÊäÈë¹ºÎïÊıÁ¿£º");
+        printf("è¯·è¾“å…¥è´­ç‰©æ•°é‡ï¼š");
         scanf("%d",&num);
         if(num > inventory->quantity)
         {
-            printf("ÏúÊÛÊıÁ¿´óÓÚ¿â´æÊıÁ¿£¬²Ù×÷ÎŞĞ§£¡\n\n");
-            printf("ÊÇ·ñÏúÊÛ½«¸ÃÉÌÆ·È«²¿ÊÛ³ö£¿£¨1.È«²¿ÊÛ³ö 2.È¡Ïû²Ù×÷£©");
+            printf("é”€å”®æ•°é‡å¤§äºåº“å­˜æ•°é‡ï¼Œæ“ä½œæ— æ•ˆï¼\n\n");
+            printf("æ˜¯å¦é”€å”®å°†è¯¥å•†å“å…¨éƒ¨å”®å‡ºï¼Ÿï¼ˆ1.å…¨éƒ¨å”®å‡º 2.å–æ¶ˆæ“ä½œï¼‰");
             scanf("%d",&sel);
             if(sel==1)
                 num = inventory->quantity;
             else
                 break;
         }
-        printf("ÇëÊäÈëÉÌÆ·ÊÛ³öµ¥¼Û£º");
+        printf("è¯·è¾“å…¥å•†å“å”®å‡ºå•ä»·ï¼š");
         scanf("%lf",&price);
 
         inventory->quantity = inventory->quantity-num;
@@ -2235,25 +2236,25 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
         p->num = commodity_head->next->num+1;
         rawtime = time(&rawtime);
         timeinfo = localtime( &rawtime );
-        transition((timeinfo->tm_year+1900),ch);//Äê·İ×ª»»
+        transition((timeinfo->tm_year+1900),ch);//å¹´ä»½è½¬æ¢
         strcpy(p->date_market,ch);
-        strcat(p->date_market,".");//Äê
-        transition((timeinfo->tm_mon+1),ch);//ÔÂ·İ×ª»»
+        strcat(p->date_market,".");//å¹´
+        transition((timeinfo->tm_mon+1),ch);//æœˆä»½è½¬æ¢
         strcat(p->date_market,ch);
-        strcat(p->date_market,".");//ÔÂ
-        transition((timeinfo->tm_mday),ch);//ÈÕ×Ó×ª»»
+        strcat(p->date_market,".");//æœˆ
+        transition((timeinfo->tm_mday),ch);//æ—¥å­è½¬æ¢
         strcat(p->date_market,ch);
-        strcat(p->date_market,".");//ÈÕ
-        strcat(p->date_market," ");//Áô°×
-        transition((timeinfo->tm_hour),ch);//Ğ¡Ê±×ª»»
-        strcat(p->date_market,ch);//Ê±
-        strcat(p->date_market,"£º");
-        transition((timeinfo->tm_min),ch);//·ÖÖÓ×ª»»
-        strcat(p->date_market,ch);//·Ö
-        strcat(p->date_market,"£º");
-        transition((timeinfo->tm_sec),ch);//ÃëÊı×ª»»
-        strcat(p->date_market,ch);//Ãë
-        strcpy(p->serial_num,serial);//Á÷Ë®ºÅ
+        strcat(p->date_market,".");//æ—¥
+        strcat(p->date_market," ");//ç•™ç™½
+        transition((timeinfo->tm_hour),ch);//å°æ—¶è½¬æ¢
+        strcat(p->date_market,ch);//æ—¶
+        strcat(p->date_market,"ï¼š");
+        transition((timeinfo->tm_min),ch);//åˆ†é’Ÿè½¬æ¢
+        strcat(p->date_market,ch);//åˆ†
+        strcat(p->date_market,"ï¼š");
+        transition((timeinfo->tm_sec),ch);//ç§’æ•°è½¬æ¢
+        strcat(p->date_market,ch);//ç§’
+        strcpy(p->serial_num,serial);//æµæ°´å·
         commodity_head->next->num = commodity_head->next->num+1;
         commodity->next = p;
         commodity = p;
@@ -2262,8 +2263,8 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
     commodity_save(commodity_head);
     inventory_save(inventory_head);
 
-    system("cls");
-    for(i=0;i<80;i++)printf(" ");printf("±¾´Î½»Ò×¼ÇÂ¼\n");
+    clear_display();
+    for(i=0;i<80;i++)printf(" ");printf("æœ¬æ¬¡äº¤æ˜“è®°å½•\n");
     p = commodity_head->next->next;
     answer = 0;
     while(p)
@@ -2279,19 +2280,19 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
     }
     if(answer == 0)
     {
-        system("cls");
-        printf("»¶Ó­ÄúµÄÏÂ´Î¹âÁÙ£¡\n");
+        clear_display();
+        printf("æ¬¢è¿æ‚¨çš„ä¸‹æ¬¡å…‰ä¸´ï¼\n");
         system("pause");
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
-    printf("±¾´Î¹ºÎï½áÊø£¡×£Äú¹ºÎïÂúÒâ£¬ĞÄÇéÓä¿ì£¡\n");
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
+    printf("æœ¬æ¬¡è´­ç‰©ç»“æŸï¼ç¥æ‚¨è´­ç‰©æ»¡æ„ï¼Œå¿ƒæƒ…æ„‰å¿«ï¼\n");
     system("pause");
     }
     }
     return;
 }
-void commodity_main_administration_return(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//ÍË»õÁ÷³Ì
+void commodity_main_administration_return(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//é€€è´§æµç¨‹
 {
     time_t rawtime;
     struct tm *timeinfo;
@@ -2299,19 +2300,19 @@ void commodity_main_administration_return(inventory_list inventory_head,commodit
     commodity_list commodity,a,p;
     inventory_list inventory;
     int sel,num,i,b;
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈëÓÃ»§ÍË»õ³ÌĞò\n");
-    printf("ÇëÍ¨¹ıÏúÊÛ¼ÇÂ¼²éÑ¯ÏµÍ³²éÑ¯ÄãÏëÒªÍË»õÉÌÆ·µÄÊÛ³ö±àºÅ²¢ÊäÈë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥ç”¨æˆ·é€€è´§ç¨‹åº\n");
+    printf("è¯·é€šè¿‡é”€å”®è®°å½•æŸ¥è¯¢ç³»ç»ŸæŸ¥è¯¢ä½ æƒ³è¦é€€è´§å•†å“çš„å”®å‡ºç¼–å·å¹¶è¾“å…¥ï¼š");
     scanf("%d",&sel);
     if(sel>commodity_head->next->num)
     {
-        printf("ÊäÈëÓĞÎó£¬ÍË»õÊ§°Ü£¡\n");
+        printf("è¾“å…¥æœ‰è¯¯ï¼Œé€€è´§å¤±è´¥ï¼\n");
         system("pause");
         return;
     }
-    printf("¶©µ¥ĞÅÏ¢£º\n");
+    printf("è®¢å•ä¿¡æ¯ï¼š\n");
     commodity_main_administration_grade();
     commodity_main_administration_printfi(commodity_head,sel);
     i = sel;
@@ -2323,24 +2324,24 @@ void commodity_main_administration_return(inventory_list inventory_head,commodit
     }
     if(commodity->sell_num<0)
     {
-        printf("¶Ô²»Æğ£¬ÄúÑ¡ÔñµÄÏúÊÛĞÅÏ¢±àÂëÎªÍË»õÉÌÆ·£¬½ûÖ¹¶à´ÎÍË»õ£¡\n");
+        printf("å¯¹ä¸èµ·ï¼Œæ‚¨é€‰æ‹©çš„é”€å”®ä¿¡æ¯ç¼–ç ä¸ºé€€è´§å•†å“ï¼Œç¦æ­¢å¤šæ¬¡é€€è´§ï¼\n");
         system("pause");
         return;
     }
-    printf("ÇëÊäÈëÄúµÄÍË»õÁ¿£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+    printf("è¯·è¾“å…¥æ‚¨çš„é€€è´§é‡ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
     scanf("%d",&num);
     if(num == -1)
         return;
     if(num>commodity->sell_num)
     {
-        printf("¶Ô²»Æğ£¬ÍË»õÁ¿´óÓÚÊÛ»õÁ¿£¬ÊÇ·ñÈ«²¿ÍË»õ£¿£¨1.È«²¿ÍË»õ 2.È¡Ïû£©\n");
+        printf("å¯¹ä¸èµ·ï¼Œé€€è´§é‡å¤§äºå”®è´§é‡ï¼Œæ˜¯å¦å…¨éƒ¨é€€è´§ï¼Ÿï¼ˆ1.å…¨éƒ¨é€€è´§ 2.å–æ¶ˆï¼‰\n");
         scanf("%d",&b);
         if(b == 1)
             num = commodity->sell_num;
         else
             return;
     }
-    printf("ÇëÈ·ÈÏÉÌÆ·ÊÇ·ñÍêºÃ£¬È·ÈÏÇëÊäÈë1£¬²»È·ÈÏÇëÊäÈë-1È¡Ïû²Ù×÷£º");
+    printf("è¯·ç¡®è®¤å•†å“æ˜¯å¦å®Œå¥½ï¼Œç¡®è®¤è¯·è¾“å…¥1ï¼Œä¸ç¡®è®¤è¯·è¾“å…¥-1å–æ¶ˆæ“ä½œï¼š");
     scanf("%d",&b);
     if(b == -1)
         return;
@@ -2373,52 +2374,52 @@ void commodity_main_administration_return(inventory_list inventory_head,commodit
         p->num = commodity_head->next->num+1;
         rawtime = time(&rawtime);
         timeinfo = localtime( &rawtime );
-        transition((timeinfo->tm_year+1900),ch);//Äê·İ×ª»»
+        transition((timeinfo->tm_year+1900),ch);//å¹´ä»½è½¬æ¢
         strcpy(p->date_market,ch);
-        strcat(p->date_market,".");//Äê
-        transition((timeinfo->tm_mon+1),ch);//ÔÂ·İ×ª»»
+        strcat(p->date_market,".");//å¹´
+        transition((timeinfo->tm_mon+1),ch);//æœˆä»½è½¬æ¢
         strcat(p->date_market,ch);
-        strcat(p->date_market,".");//ÔÂ
-        transition((timeinfo->tm_mday),ch);//ÈÕ×Ó×ª»»
+        strcat(p->date_market,".");//æœˆ
+        transition((timeinfo->tm_mday),ch);//æ—¥å­è½¬æ¢
         strcat(p->date_market,ch);
-        strcat(p->date_market,".");//ÈÕ
-        strcat(p->date_market," ");//Áô°×
-        transition((timeinfo->tm_hour),ch);//Ğ¡Ê±×ª»»
-        strcat(p->date_market,ch);//Ê±
-        strcat(p->date_market,"£º");
-        transition((timeinfo->tm_min),ch);//·ÖÖÓ×ª»»
-        strcat(p->date_market,ch);//·Ö
-        strcat(p->date_market,"£º");
-        transition((timeinfo->tm_sec),ch);//ÃëÊı×ª»»
-        strcat(p->date_market,ch);//Ãë
-        strcpy(p->serial_num,serial);//Á÷Ë®ºÅ
+        strcat(p->date_market,".");//æ—¥
+        strcat(p->date_market," ");//ç•™ç™½
+        transition((timeinfo->tm_hour),ch);//å°æ—¶è½¬æ¢
+        strcat(p->date_market,ch);//æ—¶
+        strcat(p->date_market,"ï¼š");
+        transition((timeinfo->tm_min),ch);//åˆ†é’Ÿè½¬æ¢
+        strcat(p->date_market,ch);//åˆ†
+        strcat(p->date_market,"ï¼š");
+        transition((timeinfo->tm_sec),ch);//ç§’æ•°è½¬æ¢
+        strcat(p->date_market,ch);//ç§’
+        strcpy(p->serial_num,serial);//æµæ°´å·
         commodity_head->next->num = commodity_head->next->num + 1;
         a->next = p;
         a = p;
         inventory->quantity = inventory->quantity + num;
         a->next = NULL;
     }
-    printf("ÍË»õ³É¹¦£¡\n");
+    printf("é€€è´§æˆåŠŸï¼\n");
     system("pause");
     return;
 }
-void commodity_main_administration_record(commodity_list commodity_head,user_list mine)//½»Ò×¼ÇÂ¼µ÷È¡
+void commodity_main_administration_record(commodity_list commodity_head,user_list mine)//äº¤æ˜“è®°å½•è°ƒå–
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈë½»Ò×Çé¿ö²éÑ¯³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.Êä³öÈ«²¿½»Ò×¼ÇÂ¼\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.°´Äêµ÷È¡½»Ò×¼ÇÂ¼\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("3.°´ÔÂµ÷È¡½»Ò×¼ÇÂ¼\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("4.°´Ììµ÷È¡½»Ò×¼ÇÂ¼\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("5.µ÷È¡ÏúÊÛÔ±½»Ò×¼ÇÂ¼\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("6.µ÷È¡¶©µ¥½»Ò×¼ÇÂ¼\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö½»Ò×Çé¿ö²éÑ¯³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏë³ÌĞòÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥äº¤æ˜“æƒ…å†µæŸ¥è¯¢ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.è¾“å‡ºå…¨éƒ¨äº¤æ˜“è®°å½•\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.æŒ‰å¹´è°ƒå–äº¤æ˜“è®°å½•\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("3.æŒ‰æœˆè°ƒå–äº¤æ˜“è®°å½•\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("4.æŒ‰å¤©è°ƒå–äº¤æ˜“è®°å½•\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("5.è°ƒå–é”€å”®å‘˜äº¤æ˜“è®°å½•\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("6.è°ƒå–è®¢å•äº¤æ˜“è®°å½•\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºäº¤æ˜“æƒ…å†µæŸ¥è¯¢ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç¨‹åºæ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
 
     scanf("%d",&sel);
     switch(sel)
@@ -2447,22 +2448,22 @@ void commodity_main_administration_record(commodity_list commodity_head,user_lis
     }
     return;
 }
-void commodity_main_administration_record_all(commodity_list commodity_head,user_list mine)//½»Ò×¼ÇÂ¼±éÀú
+void commodity_main_administration_record_all(commodity_list commodity_head,user_list mine)//äº¤æ˜“è®°å½•éå†
 {
     int sum,i;
     commodity_list p;
     p = commodity_head->next;
-        system("cls");
+        clear_display();
     sum = p->num;
     if(sum<=0)
     {
         for(i=0;i<15;i++)printf("\n");
-        for(i=0;i<60;i++)printf(" ");printf("\nµ±Ç°ÏµÍ³½»Ò×¼ÇÂ¼Êı¾İÎª¿Õ£¡\n");
+        for(i=0;i<60;i++)printf(" ");printf("\nå½“å‰ç³»ç»Ÿäº¤æ˜“è®°å½•æ•°æ®ä¸ºç©ºï¼\n");
         system("pause");
         return;
     }
-    //±íÍ·
-    for(i=0;i<80;i++)printf(" ");printf("½»Ò×¼ÇÂ¼\n");
+    //è¡¨å¤´
+    for(i=0;i<80;i++)printf(" ");printf("äº¤æ˜“è®°å½•\n");
     commodity_main_administration_grade();
     p = p->next;
     while(p)
@@ -2471,17 +2472,17 @@ void commodity_main_administration_record_all(commodity_list commodity_head,user
         p = p->next;
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
-void commodity_main_administration_record_year(commodity_list commodity_head,user_list mine)//½»Ò×¼ÇÂ¼°´Äêµ÷È¡
+void commodity_main_administration_record_year(commodity_list commodity_head,user_list mine)//äº¤æ˜“è®°å½•æŒ‰å¹´è°ƒå–
 {
     int i,answer = 0;
     char ch[30],year[10];
     commodity_list p;
     p = commodity_head->next->next;
-    printf("ÇëÊäÈëÄúÏëµ÷È¡¼ÇÂ¼µÄÄê·İ£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è°ƒå–è®°å½•çš„å¹´ä»½ï¼š");
     scanf("%s",ch);
     while(p)
     {
@@ -2497,12 +2498,12 @@ void commodity_main_administration_record_year(commodity_list commodity_head,use
     }
     if(answer == 0)
     {
-        system("cls");
-        printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½Ïà¹ØÊı¾İ£¡\n");
+        clear_display();
+        printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç›¸å…³æ•°æ®ï¼\n");
         system("pause");
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
@@ -2512,7 +2513,7 @@ void commodity_main_administration_record_month(commodity_list commodity_head,us
     char ch[30],month[12];
     commodity_list p;
     p = commodity_head->next->next;
-    printf("ÇëÊäÈëÄúÏëµ÷È¡¼ÇÂ¼µÄÄêÔÂ£¨****.**£©£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è°ƒå–è®°å½•çš„å¹´æœˆï¼ˆ****.**ï¼‰ï¼š");
     scanf("%s",ch);
     while(p)
     {
@@ -2528,22 +2529,22 @@ void commodity_main_administration_record_month(commodity_list commodity_head,us
     }
     if(answer == 0)
     {
-        system("cls");
-        printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½Ïà¹ØÊı¾İ£¡\n");
+        clear_display();
+        printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç›¸å…³æ•°æ®ï¼\n");
         system("pause");
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
-void commodity_main_administration_record_day(commodity_list commodity_head,user_list mine)//½»Ò×¼ÇÂ¼°´ÈÕµ÷È¡
+void commodity_main_administration_record_day(commodity_list commodity_head,user_list mine)//äº¤æ˜“è®°å½•æŒ‰æ—¥è°ƒå–
 {
     int i,answer = 0;
     char ch[30],day[15];
     commodity_list p;
     p = commodity_head->next->next;
-    printf("ÇëÊäÈëÄúÏëµ÷È¡¼ÇÂ¼µÄÄêÔÂÈÕ£¨****.**.**£©£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è°ƒå–è®°å½•çš„å¹´æœˆæ—¥ï¼ˆ****.**.**ï¼‰ï¼š");
     scanf("%s",ch);
     while(p)
     {
@@ -2559,22 +2560,22 @@ void commodity_main_administration_record_day(commodity_list commodity_head,user
     }
     if(answer == 0)
     {
-        system("cls");
-        printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½Ïà¹ØÊı¾İ£¡\n");
+        clear_display();
+        printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç›¸å…³æ•°æ®ï¼\n");
         system("pause");
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
-void commodity_main_administration_record_seller(commodity_list commodity_head,user_list mine)//µ÷È¡ÏúÊÛÔ±½»Ò×¼ÇÂ¼
+void commodity_main_administration_record_seller(commodity_list commodity_head,user_list mine)//è°ƒå–é”€å”®å‘˜äº¤æ˜“è®°å½•
 {
     int i,answer = 0;
     char ch[30];
     commodity_list p;
     p = commodity_head->next->next;
-    printf("ÇëÊäÈëÄúÏëµ÷È¡ÏúÊÛÔ±ÏúÊÛ¼ÇÂ¼µÄÓÃ»§Ãû£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è°ƒå–é”€å”®å‘˜é”€å”®è®°å½•çš„ç”¨æˆ·åï¼š");
     scanf("%s",ch);
     while(p)
     {
@@ -2589,22 +2590,22 @@ void commodity_main_administration_record_seller(commodity_list commodity_head,u
     }
     if(answer == 0)
     {
-        system("cls");
-        printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½Ïà¹ØÊı¾İ£¡\n");
+        clear_display();
+        printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç›¸å…³æ•°æ®ï¼\n");
         system("pause");
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
-void commodity_main_administration_record_order(commodity_list commodity_head,user_list mine)//µ÷È¡¶©µ¥ºÅ½»Ò×¼ÇÂ¼
+void commodity_main_administration_record_order(commodity_list commodity_head,user_list mine)//è°ƒå–è®¢å•å·äº¤æ˜“è®°å½•
 {
     int i,answer = 0;
     char ch[30];
     commodity_list p;
     p = commodity_head->next->next;
-    printf("ÇëÊäÈëÄúÏëµ÷È¡ÏúÊÛ¼ÇÂ¼µÄ¶©µ¥ºÅ£º");
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è°ƒå–é”€å”®è®°å½•çš„è®¢å•å·ï¼š");
     scanf("%s",ch);
     while(p)
     {
@@ -2619,16 +2620,16 @@ void commodity_main_administration_record_order(commodity_list commodity_head,us
     }
     if(answer == 0)
     {
-        system("cls");
-        printf("¶Ô²»Æğ£¬Ã»ÓĞÕÒµ½Ïà¹ØÊı¾İ£¡\n");
+        clear_display();
+        printf("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‰¾åˆ°ç›¸å…³æ•°æ®ï¼\n");
         system("pause");
     }
     printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+    for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
     system("pause");
     return;
 }
-void commodity_main_administration_revamp(commodity_list commodity_head,user_list mine)//ĞŞ¸Ä½»Ò×¼ÇÂ¼
+void commodity_main_administration_revamp(commodity_list commodity_head,user_list mine)//ä¿®æ”¹äº¤æ˜“è®°å½•
 {
     commodity_list p,b;
     double ch_double;
@@ -2639,22 +2640,22 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
     p = commodity_head->next;
     b = commodity_head;
     sum = p->num;
-    system("cls");
-    printf("ÇëÊäÈëÄúÏëÒªĞŞ¸ÄµÄÏúÊÛÉÌÆ·±àºÅ£¨¿ÉÍ¨¹ı²éÕÒ¹¦ÄÜÈ·¶¨±àºÅ£ºÊäÈë-1ÍË³ö£©£º");
+    clear_display();
+    printf("è¯·è¾“å…¥æ‚¨æƒ³è¦ä¿®æ”¹çš„é”€å”®å•†å“ç¼–å·ï¼ˆå¯é€šè¿‡æŸ¥æ‰¾åŠŸèƒ½ç¡®å®šç¼–å·ï¼šè¾“å…¥-1é€€å‡ºï¼‰ï¼š");
     scanf("%d",&num);
     if(num>sum||num<0)
     {
-        printf("ÊäÈëÓĞÎó£¬ĞŞ¸ÄÊ§°Ü£¡\n");
+        printf("è¾“å…¥æœ‰è¯¯ï¼Œä¿®æ”¹å¤±è´¥ï¼\n");
         system("pause");
         return;
     }
     if(num == -1) return;
     while(1)
     {
-    printf("¸ÃĞòºÅÖ¸ÏòµÄÉÌÆ·ĞÅÏ¢ÈçÏÂ£º\n");
+    printf("è¯¥åºå·æŒ‡å‘çš„å•†å“ä¿¡æ¯å¦‚ä¸‹ï¼š\n");
     commodity_main_administration_grade();
-    commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
-    printf("È·ÈÏĞŞ¸Ä£¿£¨1.È·ÈÏ 2.È¡Ïû£©");
+    commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
+    printf("ç¡®è®¤ä¿®æ”¹ï¼Ÿï¼ˆ1.ç¡®è®¤ 2.å–æ¶ˆï¼‰");
     scanf("%d",&sel);
     if(sel==2)return;
     i = num;
@@ -2664,150 +2665,150 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         p = p->next;
     }
         for(i=0;i<5;i++)printf("\n");
-        for(i=0;i<50;i++)printf(" ");printf("²Ù×÷Çåµ¥£º\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("1.ĞŞ¸ÄÉÌÆ·Ãû\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("2.ĞŞ¸ÄÉÌÆ·Éú²úÆóÒµÃû\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("3.ĞŞ¸ÄÉÌÆ··ÖÀà\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("4.ĞŞ¸ÄÉÌÆ·ÏúÊÛÊ±¼ä\n\n");//
-        for(i=0;i<60;i++)printf(" ");printf("5.ĞŞ¸ÄÉÌÆ·½ø¼Û\n\n");//
-        for(i=0;i<60;i++)printf(" ");printf("6.ĞŞ¸ÄÉÌÆ·ÏúÊÛÁ¿\n\n");//
-        for(i=0;i<60;i++)printf(" ");printf("7.ĞŞ¸ÄÉÌÆ·ÀûÈó\n\n");//
-        for(i=0;i<60;i++)printf(" ");printf("8.É¾³ıµ±Ç°ÉÌÆ·ÏúÊÛĞÅÏ¢\n\n");//
-        for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¸Ã²Ù×÷³ÌĞò\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÒªÖ´ĞĞ²Ù×÷µÄ´úÂë£º");
+        for(i=0;i<50;i++)printf(" ");printf("æ“ä½œæ¸…å•ï¼š\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("1.ä¿®æ”¹å•†å“å\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("2.ä¿®æ”¹å•†å“ç”Ÿäº§ä¼ä¸šå\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("3.ä¿®æ”¹å•†å“åˆ†ç±»\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("4.ä¿®æ”¹å•†å“é”€å”®æ—¶é—´\n\n");//
+        for(i=0;i<60;i++)printf(" ");printf("5.ä¿®æ”¹å•†å“è¿›ä»·\n\n");//
+        for(i=0;i<60;i++)printf(" ");printf("6.ä¿®æ”¹å•†å“é”€å”®é‡\n\n");//
+        for(i=0;i<60;i++)printf(" ");printf("7.ä¿®æ”¹å•†å“åˆ©æ¶¦\n\n");//
+        for(i=0;i<60;i++)printf(" ");printf("8.åˆ é™¤å½“å‰å•†å“é”€å”®ä¿¡æ¯\n\n");//
+        for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºè¯¥æ“ä½œç¨‹åº\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³è¦æ‰§è¡Œæ“ä½œçš„ä»£ç ï¼š");
         scanf("%d",&sel);
     switch(sel)
     {
     case 1:
-        printf("µ±Ç°ÉÌÆ·Ãû³ÆÎª£º%s\n",p->name);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Ãû£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“åç§°ä¸ºï¼š%s\n",p->name);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)
             continue;
         strcpy(p->name,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
     case 2:
-        printf("µ±Ç°ÉÌÆ·Éú²úÆóÒµÃû³ÆÎª£º%s\n",p->company);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Ãû£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“ç”Ÿäº§ä¼ä¸šåç§°ä¸ºï¼š%s\n",p->company);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
         if(strlen(ch)>30&&strlen(ch)<3)
         {
-        printf("ÊäÈë×Ö·û¹ı³¤£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëĞŞ¸ÄºóµÄÉÌÆ·Ãû³Æ£¨ÄÚÈİ¿ØÖÆÔÚ1~15×Ö£©£º");
+        printf("è¾“å…¥å­—ç¬¦è¿‡é•¿ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥ä¿®æ”¹åçš„å•†å“åç§°ï¼ˆå†…å®¹æ§åˆ¶åœ¨1~15å­—ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<3)
         {
-            printf("¶Ô²»Æğ£¡ĞŞ¸ÄÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼ä¿®æ”¹å¤±è´¥ï¼\n");
             system("pause");
             break;
         }
         }
         strcpy(p->company,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
     case 3:
-        printf("µ±Ç°ÉÌÆ··ÖÀàÎª£º%s\n",p->type);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ··ÖÀà£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“åˆ†ç±»ä¸ºï¼š%s\n",p->type);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“åˆ†ç±»ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
         if(strlen(ch)>30&&strlen(ch)<1)
         {
-        printf("ÊäÈë¸ñÊ½·Ç·¨£¬ÇëÖØĞÂÊäÈë£¡");
-        printf("ÇëÔÙ´ÎÊäÈëÉÌÆ·Éú²úÆóÒµÃû£¨¿ØÖÆÔÚ15Î»ºº×Ö»ò30Î»Ó¢ÎÄ£©£º");
+        printf("è¾“å…¥æ ¼å¼éæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
+        printf("è¯·å†æ¬¡è¾“å…¥å•†å“ç”Ÿäº§ä¼ä¸šåï¼ˆæ§åˆ¶åœ¨15ä½æ±‰å­—æˆ–30ä½è‹±æ–‡ï¼‰ï¼š");
         scanf("%s",ch);
         if(strlen(ch)>30&&strlen(ch)<1)
         {
-            printf("¶Ô²»Æğ£¡ĞŞ¸ÄÊ§°Ü£¡\n");
+            printf("å¯¹ä¸èµ·ï¼ä¿®æ”¹å¤±è´¥ï¼\n");
             system("pause");
             break;
         }
         }
         strcpy(p->type,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
     case 4:
-        printf("µ±Ç°ÉÌÆ·ÏúÊÛÈÕÆÚÎª£º%s\n",p->date_market);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·ÏúÊÛÈÕÆÚ£¨¸ñÊ½£ºxxxx.xx.xx xx:xx:xx;ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+        printf("å½“å‰å•†å“é”€å”®æ—¥æœŸä¸ºï¼š%s\n",p->date_market);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“é”€å”®æ—¥æœŸï¼ˆæ ¼å¼ï¼šxxxx.xx.xx xx:xx:xx;è¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%s",ch);
         if(strcmp(ch,"-1")==0)continue;
         strcpy(p->date_market,ch);
         scanf("%s",ch);
         strcat(p->date_market," ");
         strcat(p->date_market,ch);
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
-    case 5://½ø¼Û
-        printf("µ±Ç°ÉÌÆ·½ø¼ÛÎª£º%.2lf\n",p->pirce_enter);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·½ø¼Û£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+    case 5://è¿›ä»·
+        printf("å½“å‰å•†å“è¿›ä»·ä¸ºï¼š%.2lf\n",p->pirce_enter);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“è¿›ä»·ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%lf",&ch_double);
         if(ch_double==-1)continue;
         p->pirce_enter = ch_double;
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
-    case 6://ÏúÁ¿
-        printf("µ±Ç°ÉÌÆ·ÏúÊÛÁ¿Îª£º%d\n",p->sell_num);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄÉÌÆ·ÏúÊÛÁ¿£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+    case 6://é”€é‡
+        printf("å½“å‰å•†å“é”€å”®é‡ä¸ºï¼š%d\n",p->sell_num);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å•†å“é”€å”®é‡ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%d",&ch_int);
         if(ch_int==-1)continue;
 
         p->sell_num = ch_int;
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
-    case 7://ÀûÈó
-        printf("µ±Ç°ÉÌÆ·ÀûÈóÎª£º%.2lf\n",p->pircr_profit);
-        printf("ÇëÊäÈëĞŞ¸ÄºóµÄ½ø¼Û£¨ÊäÈë-1È¡Ïû²Ù×÷£©£º");
+    case 7://åˆ©æ¶¦
+        printf("å½“å‰å•†å“åˆ©æ¶¦ä¸ºï¼š%.2lf\n",p->pircr_profit);
+        printf("è¯·è¾“å…¥ä¿®æ”¹åçš„è¿›ä»·ï¼ˆè¾“å…¥-1å–æ¶ˆæ“ä½œï¼‰ï¼š");
         scanf("%lf",&ch_double);
         if(ch_double==-1)continue;
 
         p->pircr_profit = ch_double;
-        printf("ĞŞ¸ÄºóµÄÉÌÆ·ĞÅÏ¢Îª£º\n");
+        printf("ä¿®æ”¹åçš„å•†å“ä¿¡æ¯ä¸ºï¼š\n");
         commodity_main_administration_grade();
-        commodity_main_administration_printfi(commodity_head,num);//Êä³öi´¦µÄĞÅÏ¢
+        commodity_main_administration_printfi(commodity_head,num);//è¾“å‡ºiå¤„çš„ä¿¡æ¯
         printf("\n");
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         commodity_save(commodity_head);
         system("pause");
         return;
     case 8:
-        printf("È·ÈÏÉ¾³ı£¿£¨1.È·ÈÏ 2.È¡Ïû£©");
+        printf("ç¡®è®¤åˆ é™¤ï¼Ÿï¼ˆ1.ç¡®è®¤ 2.å–æ¶ˆï¼‰");
         scanf("%d",&sel);
         if(sel==2)return;
         b->next = p->next;
@@ -2819,7 +2820,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
             p = p->next;
         }
         commodity_head->next->num = commodity_head->next->num-1;
-        printf("É¾³ı³É¹¦£¡\n");
+        printf("åˆ é™¤æˆåŠŸï¼\n");
         commodity_save(commodity_head);
         system("pause");
         return;
@@ -2829,7 +2830,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
     }
     }
 }
-void commodity_main_administration_analyse(commodity_list commodity_head,user_list mine)//½»Ò×Çé¿ö·ÖÎö
+void commodity_main_administration_analyse(commodity_list commodity_head,user_list mine)//äº¤æ˜“æƒ…å†µåˆ†æ
 {
     commodity_list p;
     int i,sel;
@@ -2837,16 +2838,16 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
     char ch[20],info[20];
     while(1)
     {
-        system("cls");
+        clear_display();
         for(i=0;i<5;i++)printf("\n");
-        for(i=0;i<50;i++)printf(" ");printf("²Ù×÷Çåµ¥£º\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("1.Äê¶ÈÏúÊÛÇé¿öÍ³¼Æ\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("2.ÔÂ¶ÈÏúÊÛÇé¿öÍ³¼Æ\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("3.Ò»ÈÕÏúÊÛÇé¿öÍ³¼Æ\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¸Ã²Ù×÷³ÌĞò\n\n");
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÒªÖ´ĞĞ²Ù×÷µÄ´úÂë£º");
+        for(i=0;i<50;i++)printf(" ");printf("æ“ä½œæ¸…å•ï¼š\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("1.å¹´åº¦é”€å”®æƒ…å†µç»Ÿè®¡\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("2.æœˆåº¦é”€å”®æƒ…å†µç»Ÿè®¡\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("3.ä¸€æ—¥é”€å”®æƒ…å†µç»Ÿè®¡\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºè¯¥æ“ä½œç¨‹åº\n\n");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³è¦æ‰§è¡Œæ“ä½œçš„ä»£ç ï¼š");
         scanf("%d",&sel);
-        p = commodity_head->next->next;//Ìø¹ıÇ°µ¼
+        p = commodity_head->next->next;//è·³è¿‡å‰å¯¼
         sum_sell = 0;
         sum_enter = 0;
         sum_return = 0;
@@ -2854,7 +2855,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
     switch(sel)
     {
     case 1:
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÍ³¼ÆÄê¶ÈÏúÊÛÇé¿öµÄÄê¶È£º");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç»Ÿè®¡å¹´åº¦é”€å”®æƒ…å†µçš„å¹´åº¦ï¼š");
         scanf("%s",ch);
         while(p)
         {
@@ -2878,20 +2879,20 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         for(i=0;i<5;i++)printf("\n");
         if(sum_enter==0)
         {
-            for(i=0;i<50;i++)printf(" ");printf("Ã»ÓĞÓëÖ®Ïà¹ØµÄÏúÊÛ¼ÇÂ¼£¬ÎŞĞ§²Ù×÷£¡\n");
+            for(i=0;i<50;i++)printf(" ");printf("æ²¡æœ‰ä¸ä¹‹ç›¸å…³çš„é”€å”®è®°å½•ï¼Œæ— æ•ˆæ“ä½œï¼\n");
             system("pause");
             continue;
         }
-        for(i=0;i<50;i++)printf(" ");printf("%sÄêÄê¶ÈÏúÊÛÇé¿öÍ³¼Æ£º\n\n",ch);
-        for(i=0;i<50;i++)printf(" ");printf("±¾Äê¶È¹²ÏúÊÛ¶î£º%.2lf\n\n",sum_sell);
-        for(i=0;i<50;i++)printf(" ");printf("±¾Äê¶ÈÊÕÒæÂÊ£¨²»º¬ÍË»õ£©£º%.2f\n\n",(sum_sell-sum_enter)/sum_enter);
-        for(i=0;i<50;i++)printf(" ");printf("±¾Äê¶È¿÷Ëğ¶î£º%.2lf\n\n",sum_loss);
-        for(i=0;i<50;i++)printf(" ");printf("±¾Äê¶ÈÍË»õ½ğ¶î£º%.2lf\n\n",sum_return);
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<50;i++)printf(" ");printf("%så¹´å¹´åº¦é”€å”®æƒ…å†µç»Ÿè®¡ï¼š\n\n",ch);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬å¹´åº¦å…±é”€å”®é¢ï¼š%.2lf\n\n",sum_sell);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬å¹´åº¦æ”¶ç›Šç‡ï¼ˆä¸å«é€€è´§ï¼‰ï¼š%.2f\n\n",(sum_sell-sum_enter)/sum_enter);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬å¹´åº¦äºæŸé¢ï¼š%.2lf\n\n",sum_loss);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬å¹´åº¦é€€è´§é‡‘é¢ï¼š%.2lf\n\n",sum_return);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
         return;
     case 2:
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÍ³¼ÆÔÂ¶ÈÏúÊÛÇé¿öµÄÔÂ¶È£¨xxxx.xx£©£º");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç»Ÿè®¡æœˆåº¦é”€å”®æƒ…å†µçš„æœˆåº¦ï¼ˆxxxx.xxï¼‰ï¼š");
         scanf("%s",ch);
         while(p)
         {
@@ -2915,20 +2916,20 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         for(i=0;i<5;i++)printf("\n");
         if(sum_enter==0)
         {
-            for(i=0;i<50;i++)printf(" ");printf("Ã»ÓĞÓëÖ®Ïà¹ØµÄÏúÊÛ¼ÇÂ¼£¬ÎŞĞ§²Ù×÷£¡\n");
+            for(i=0;i<50;i++)printf(" ");printf("æ²¡æœ‰ä¸ä¹‹ç›¸å…³çš„é”€å”®è®°å½•ï¼Œæ— æ•ˆæ“ä½œï¼\n");
             system("pause");
             continue;
         }
-        for(i=0;i<50;i++)printf(" ");printf("%sÔÂÔÂ¶ÈÏúÊÛÇé¿öÍ³¼Æ£º\n\n",ch);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÔÂ¶È¹²ÏúÊÛ¶î£º%.2lf\n\n",sum_sell);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÔÂ¶ÈÊÕÒæÂÊ£¨²»º¬ÍË»õ£©£º%.2f\n\n",(sum_sell-sum_enter)/sum_enter);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÔÂ¶È¿÷Ëğ¶î£º%.2lf\n\n",sum_loss);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÔÂ¶ÈÍË»õ½ğ¶î£º%.2lf\n\n",sum_return);
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<50;i++)printf(" ");printf("%sæœˆæœˆåº¦é”€å”®æƒ…å†µç»Ÿè®¡ï¼š\n\n",ch);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æœˆåº¦å…±é”€å”®é¢ï¼š%.2lf\n\n",sum_sell);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æœˆåº¦æ”¶ç›Šç‡ï¼ˆä¸å«é€€è´§ï¼‰ï¼š%.2f\n\n",(sum_sell-sum_enter)/sum_enter);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æœˆåº¦äºæŸé¢ï¼š%.2lf\n\n",sum_loss);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æœˆåº¦é€€è´§é‡‘é¢ï¼š%.2lf\n\n",sum_return);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
         return;
     case 3:
-        for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏëÍ³¼ÆÒ»ÈÕÏúÊÛÇé¿öµÄÈÕÆÚ£¨xxxx.xx.xx£©£º");
+        for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç»Ÿè®¡ä¸€æ—¥é”€å”®æƒ…å†µçš„æ—¥æœŸï¼ˆxxxx.xx.xxï¼‰ï¼š");
         scanf("%s",ch);
         while(p)
         {
@@ -2952,16 +2953,16 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         for(i=0;i<5;i++)printf("\n");
         if(sum_enter==0)
         {
-            for(i=0;i<50;i++)printf(" ");printf("Ã»ÓĞÓëÖ®Ïà¹ØµÄÏúÊÛ¼ÇÂ¼£¬ÎŞĞ§²Ù×÷£¡\n");
+            for(i=0;i<50;i++)printf(" ");printf("æ²¡æœ‰ä¸ä¹‹ç›¸å…³çš„é”€å”®è®°å½•ï¼Œæ— æ•ˆæ“ä½œï¼\n");
             system("pause");
             continue;
         }
-        for(i=0;i<50;i++)printf(" ");printf("%sÈÕÒ»ÈÕÏúÊÛÇé¿öÍ³¼Æ£º\n\n",ch);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÈÕ¹²ÏúÊÛ¶î£º%.2lf\n\n",sum_sell);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÈÕÊÕÒæÂÊ£¨²»º¬ÍË»õ£©£º%.2f\n\n",(sum_sell-sum_enter)/sum_enter);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÈÕ¿÷Ëğ¶î£º%.2lf\n\n",sum_loss);
-        for(i=0;i<50;i++)printf(" ");printf("±¾ÈÕÍË»õ½ğ¶î£º%.2lf\n\n",sum_return);
-        for(i=0;i<120;i++)printf(" ");printf("²Ù×÷ÈË£º%s\n",mine->name);
+        for(i=0;i<50;i++)printf(" ");printf("%sæ—¥ä¸€æ—¥é”€å”®æƒ…å†µç»Ÿè®¡ï¼š\n\n",ch);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æ—¥å…±é”€å”®é¢ï¼š%.2lf\n\n",sum_sell);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æ—¥æ”¶ç›Šç‡ï¼ˆä¸å«é€€è´§ï¼‰ï¼š%.2f\n\n",(sum_sell-sum_enter)/sum_enter);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æ—¥äºæŸé¢ï¼š%.2lf\n\n",sum_loss);
+        for(i=0;i<50;i++)printf(" ");printf("æœ¬æ—¥é€€è´§é‡‘é¢ï¼š%.2lf\n\n",sum_return);
+        for(i=0;i<120;i++)printf(" ");printf("æ“ä½œäººï¼š%s\n",mine->name);
         system("pause");
         return;
     case 0:
@@ -2969,9 +2970,9 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
     }
     }
 }
-void commodity_main_administration_printfi(commodity_list commodity_head,int num)//Êä³öÏúÊÛ±íÖĞi´¦µÄĞÅÏ¢
+void commodity_main_administration_printfi(commodity_list commodity_head,int num)//è¾“å‡ºé”€å”®è¡¨ä¸­iå¤„çš„ä¿¡æ¯
 {
-    commodity_list p = commodity_head->next;//Ìø¹ıÇ°µ¼
+    commodity_list p = commodity_head->next;//è·³è¿‡å‰å¯¼
     while(num--)
     {
         p = p->next;
@@ -2979,9 +2980,9 @@ void commodity_main_administration_printfi(commodity_list commodity_head,int num
         printf("%-6d%-12s%-15s%-30s%-10s%-27s%-15.2lf%-15.2lf%-15d%-15.2lf%-30s\n",p->num,p->serial_num,p->id,p->name,p->type,p->date_market,p->pirce_enter,p->pirce_sell,p->sell_num,p->pircr_profit,p->operator_name);
     return;
 }
-void commodity_main_administration_grade()//ÏúÊÛ±í±íÍ·
+void commodity_main_administration_grade()//é”€å”®è¡¨è¡¨å¤´
 {
-    printf("%-6s%-12s%-15s%-30s%-10s%-27s%-15s%-15s%-15s%-15s%-30s\n","±àºÅ","¶©µ¥ºÅ","Ê¶±ğÂë","ÉÌÆ·Ãû³Æ","ÉÌÆ··ÖÀà","ÏúÊÛÈÕÆÚ","±ê¼Û","ÊÛ¼Û","ÏúÊÛÁ¿","ÀûÈó","²Ù×÷ÈË");
+    printf("%-6s%-12s%-15s%-30s%-10s%-27s%-15s%-15s%-15s%-15s%-30s\n","ç¼–å·","è®¢å•å·","è¯†åˆ«ç ","å•†å“åç§°","å•†å“åˆ†ç±»","é”€å”®æ—¥æœŸ","æ ‡ä»·","å”®ä»·","é”€å”®é‡","åˆ©æ¶¦","æ“ä½œäºº");
     return;
 }
 void transition(int num,char ch[10])
@@ -3013,7 +3014,7 @@ void transition(int num,char ch[10])
     }
     return;
 }
-int transition_ch(char ch[20])//ÀàĞÍ×ª»» ½«Êı×Ö´®×Ö·ûÊı×éµ¼³öÎªÕûĞÎÊı×Ö
+int transition_ch(char ch[20])//ç±»å‹è½¬æ¢ å°†æ•°å­—ä¸²å­—ç¬¦æ•°ç»„å¯¼å‡ºä¸ºæ•´å½¢æ•°å­—
 {
     int num,i;
     num = 0;
@@ -3023,19 +3024,19 @@ int transition_ch(char ch[20])//ÀàĞÍ×ª»» ½«Êı×Ö´®×Ö·ûÊı×éµ¼³öÎªÕûĞÎÊı×Ö
     }
     return num;
 }
-void commodity_main_common(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//ÆÕÍ¨ÏúÊÛÖ÷º¯Êı
+void commodity_main_common(inventory_list inventory_head,commodity_list commodity_head,user_list mine)//æ™®é€šé”€å”®ä¸»å‡½æ•°
 {
     int sel,i;
     while(1)
     {
-    system("cls");
+    clear_display();
     for(i=0;i<15;i++)printf("\n");
-    for(i=0;i<120;i++)printf(" ");printf("µ±Ç°ÓÃ»§Îª£º%s\n",mine->name);
-    for(i=0;i<60;i++)printf(" ");printf("»¶Ó­Äú½øÈëÉÌÆ·ÏúÊÛÏµÍ³\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("1.²éÑ¯ÉÌÆ·&ÏúÊÛ\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("2.ÉÌÆ·ÏúÊÛ³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("0.ÍË³ö¿â´æĞÅÏ¢¹ÜÀí³ÌĞò\n\n");
-    for(i=0;i<60;i++)printf(" ");printf("ÇëÊäÈëÄúÏë³ÌĞòÖ´ĞĞµÄ²Ù×÷´úÂë£º");
+    for(i=0;i<120;i++)printf(" ");printf("å½“å‰ç”¨æˆ·ä¸ºï¼š%s\n",mine->name);
+    for(i=0;i<60;i++)printf(" ");printf("æ¬¢è¿æ‚¨è¿›å…¥å•†å“é”€å”®ç³»ç»Ÿ\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("1.æŸ¥è¯¢å•†å“&é”€å”®\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("2.å•†å“é”€å”®ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("0.é€€å‡ºåº“å­˜ä¿¡æ¯ç®¡ç†ç¨‹åº\n\n");
+    for(i=0;i<60;i++)printf(" ");printf("è¯·è¾“å…¥æ‚¨æƒ³ç¨‹åºæ‰§è¡Œçš„æ“ä½œä»£ç ï¼š");
     scanf("%d",&sel);
     switch(sel)
     {
@@ -3055,5 +3056,15 @@ void commodity_main_common(inventory_list inventory_head,commodity_list commodit
     commodity_save(commodity_head);
     inventory_save(inventory_head);
     }
+    return;
+}
+
+void clear_display() {
+    #ifdef _WIN32
+    clear_display();
+    #endif
+    #ifdef linux
+    system("clear");
+    #endif
     return;
 }
