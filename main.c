@@ -144,7 +144,7 @@ int main()
     if(sel>'9'||sel<'0')
     {
         for(i=0;i<60;i++)printf(" ");printf("输入非法，请重新选择！\n");
-        system("pause");
+        getchar();
         continue;
     }
         switch(sel)
@@ -162,7 +162,7 @@ int main()
         else
         {
             for(i=0;i<60;i++)printf(" ");printf("请检查您的用户民和密码，若忘记，可进行初始化操作\n");
-            system("pause");
+            getchar();
             continue;
         }
         continue;
@@ -317,7 +317,7 @@ int initialize(user_list user_head,commodity_list commodity_head,inventory_list 
     for(i=0;i<60;i++)printf(" ");printf("请牢记您的初始管理员用户名及密码\n");
     for(i=0;i<60;i++)printf(" ");printf("用户名：admin\n");
     for(i=0;i<60;i++)printf(" ");printf("密码：admin\n");
-    system("pause");
+    getchar();
     return -1;
 }
 
@@ -552,7 +552,7 @@ void administration_main(user_list user_head,commodity_list commodity_head,inven
     if(sel>'9'||sel<'0')
     {
         printf("输入非法，请重新选择！\n");
-        system("pause");
+        getchar();
     }
     else
     switch(sel)
@@ -590,7 +590,7 @@ void common_main(user_list user_head,commodity_list commodity_head,inventory_lis
     if(sel>'9'||sel<'0')
     {
         printf("输入非法，请重新选择！\n");
-        system("pause");
+        getchar();
         continue;
     }
     else
@@ -676,7 +676,7 @@ void user_main_administration_ergodicity(user_list user_head,user_list mine)//�
         p = p->next;
     }
     for(i=0;i<120;i++)printf(" ");printf("\n当前用户为：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 
@@ -714,7 +714,7 @@ void user_main_administration_add(user_list user_head,user_list mine)//添加新
     else
         printf("%20s\n","普通用户");
     user_save(user_head);
-    system("pause");
+    getchar();
     return;
 }
 void user_main_administration_rank(user_list user_head,user_list mine)//身份修改
@@ -734,7 +734,7 @@ void user_main_administration_rank(user_list user_head,user_list mine)//身份�
     if(sel==mine->num)
     {
         printf("对不起！本系统不允许当前用户修改当前用户身份！\n");
-        system("pause");
+        getchar();
         return;
     }
     while(sel--)
@@ -759,11 +759,11 @@ void user_main_administration_rank(user_list user_head,user_list mine)//身份�
         else
         {
             printf("操作已取消！\n");
-            system("pause");
+            getchar();
             return;
         }
             printf("身份变更成功！\n");
-            system("pause");
+            getchar();
         return;
 
 }
@@ -780,13 +780,13 @@ void user_main_administration_delete(user_list user_head,user_list mine)//注销
     if(sel>sum)
     {
         printf("对不起！输入序号无效！\n");
-        system("pause");
+        getchar();
         return;
     }
     if(sel==mine->num)
     {
         printf("对不起！本系统不允许当前用户注销当前用户！\n");
-        system("pause");
+        getchar();
         return;
     }
     while(i<sel)
@@ -822,7 +822,7 @@ void user_main_administration_delete(user_list user_head,user_list mine)//注销
 
     user_save(user_head);
     printf("注销该账号成功！\n");
-    system("pause");
+    getchar();
     return;
 }
 void user_main_administration_mine(user_list user_head,user_list mine)//我的信息
@@ -832,7 +832,7 @@ void user_main_administration_mine(user_list user_head,user_list mine)//我的�
         printf("%20s\n","管理员");
     else
         printf("%20s\n","普通用户");
-    system("pause");
+    getchar();
     return;
 }
 void user_main_administration_revamp(user_list user_head,user_list mine)//修改我的密码
@@ -866,17 +866,17 @@ void user_main_administration_revamp(user_list user_head,user_list mine)//修改
             strcpy(p->password,mine->password);
         else
             return;
-        system("pause");
+        getchar();
         clear_display();
         printf("请牢记您的新密码！\n");
-        system("pause");
+        getchar();
         user_save(user_head);
         return;
     }
     else
     {
         printf("您的输入有误！修改密码失败！\n");
-        system("pause");
+        getchar();
     }
     return;
 }
@@ -970,7 +970,7 @@ void inventory_main_administration_ergodicity(inventory_list inventory_head,user
     {
         for(i=0;i<15;i++)printf("\n");
         printf("\n库存数据库内当前没有库存信息，请您进货或者录入数据！\n");
-        system("pause");
+        getchar();
         return;
     }
     for(i=0;i<80;i++)printf(" ");printf("库存清单\n");
@@ -983,7 +983,7 @@ void inventory_main_administration_ergodicity(inventory_list inventory_head,user
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 
@@ -1023,7 +1023,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(strlen(ch)>13&&strlen(ch)<13)
         {
             printf("对不起！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1039,7 +1039,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(strlen(ch)>30&&strlen(ch)<1)
         {
             printf("对不起！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1055,7 +1055,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(strlen(ch)>30&&strlen(ch)<1)
         {
             printf("对不起！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1071,7 +1071,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(strlen(ch)>10&&strlen(ch)<1)
         {
             printf("对不起！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1089,7 +1089,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(strcmp(y,"2050")>0||strcmp(y,"1970")<0||strcmp(m,"01")<0||strcmp(m,"12")>0||strcmp(d,"01")<0||strcmp(d,"31")>0)
         {
             printf("对不起！输入非法！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1110,7 +1110,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(strcmp(ch,"0")<=0)
         {
             printf("数据异常！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1126,7 +1126,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(quanlity<0)
         {
             printf("数据异常！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1142,7 +1142,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(price<0)
         {
             printf("数据异常！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1158,7 +1158,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(price<0)
         {
             printf("数据异常！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1170,7 +1170,7 @@ void inventory_main_administration_add(inventory_list inventory_head,user_list m
         if(price < p->pirce_enter||price<0)
         {
             printf("数据异常！入库失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1202,7 +1202,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
     if(num>sum&&num<0)
     {
         printf("输入有误，修改失败！\n");
-        system("pause");
+        getchar();
         return;
     }
     if(num == -1) return;
@@ -1251,7 +1251,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 2:
         printf("当前商品生产企业名称为：%s\n",p->company);
@@ -1267,7 +1267,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         if(strlen(ch)>30&&strlen(ch)<3)
         {
             printf("对不起！修改失败！\n");
-            system("pause");
+            getchar();
             return;
         }
         }
@@ -1278,7 +1278,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 3:
         printf("当前商品分类为：%s\n",p->type);
@@ -1293,7 +1293,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         if(strlen(ch)>30&&strlen(ch)<1)
         {
             printf("对不起！修改失败！\n");
-            system("pause");
+            getchar();
             return;
         }
         }
@@ -1304,7 +1304,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 4:
         printf("当前商品生产日期为：%s\n",p->date_manufacture);
@@ -1321,7 +1321,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         if(strcmp(y,"2050")>0||strcmp(y,"1970")<0||strcmp(m,"01")<0||strcmp(m,"12")>0||strcmp(d,"01")<0||strcmp(d,"31")>0)
         {
             printf("对不起！输入非法！操作失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1338,7 +1338,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 5:
         printf("当前商品保质期为：%s\n",p->date_keep);
@@ -1363,7 +1363,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 6:
         printf("当前商品库存量为：%d\n",p->quantity);
@@ -1378,7 +1378,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         if(ch_int<0)
         {
             printf("数据异常！操作失败！\n");
-            system("pause");
+            getchar();
             return;
         }
         }
@@ -1389,7 +1389,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 7:
         printf("当前商品进价为：%.2lf\n",p->pirce_enter);
@@ -1404,7 +1404,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         if(ch_double<0)
         {
             printf("数据异常！操作失败！\n");
-            system("pause");
+            getchar();
             return;
         }
         }
@@ -1415,7 +1415,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 8:
         printf("当前商品建议售价：%.2lf\n",p->pirce_sell);
@@ -1431,7 +1431,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         if(ch_double<0)
         {
             printf("数据异常！操作失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1453,7 +1453,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
         continue;
     case 9:
         printf("确认删除？（1.确认 2.取消）");
@@ -1470,7 +1470,7 @@ void inventory_main_administration_revamp(inventory_list inventory_head,user_lis
         guide->num = guide->num-1;
         printf("删除成功！\n");
         inventory_save(inventory_head);
-        system("pause");
+        getchar();
             continue;
     case 0:
         return;
@@ -1511,7 +1511,7 @@ void inventory_main_administration_find(inventory_list inventory_head,user_list 
         inventory_main_administration_printfi(inventory_head,answer);//输出i处的信息
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
         continue;
     case 2:
         inventory_main_administration_find_name(inventory_head,mine);
@@ -1551,7 +1551,7 @@ int inventory_main_administration_find_id(inventory_list inventory_head,user_lis
         if(strlen(ch)>13&&strlen(ch)<13)
         {
             printf("对不起！查找失败！\n");
-            system("pause");
+            getchar();
             return 0;
         }
     }
@@ -1580,7 +1580,7 @@ void inventory_main_administration_find_name(inventory_list inventory_head,user_
         if(strlen(ch)>30&&strlen(ch)<3)
         {
             printf("对不起！查找元素指定失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1614,7 +1614,7 @@ void inventory_main_administration_find_name(inventory_list inventory_head,user_
         }
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
     return;
 }
 void inventory_main_administration_find_company(inventory_list inventory_head,user_list mine)//商品查找-按生产企业
@@ -1634,7 +1634,7 @@ void inventory_main_administration_find_company(inventory_list inventory_head,us
         if(strlen(ch)>30&&strlen(ch)<3)
         {
             printf("对不起！查找元素指定失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1668,7 +1668,7 @@ void inventory_main_administration_find_company(inventory_list inventory_head,us
         }
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
     return;
 }
 void inventory_main_administration_find_type(inventory_list inventory_head,user_list mine)//商品查找-按商品分类
@@ -1688,7 +1688,7 @@ void inventory_main_administration_find_type(inventory_list inventory_head,user_
         if(strlen(ch)>16&&strlen(ch)<3)
         {
             printf("对不起！查找元素指定失败！\n");
-            system("pause");
+            getchar();
             return;
         }
     }
@@ -1722,7 +1722,7 @@ void inventory_main_administration_find_type(inventory_list inventory_head,user_
         }
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
     return;
 }
 void inventory_main_administration_find_manufacture(inventory_list inventory_head,user_list mine)//商品查找-按生产日期
@@ -1795,13 +1795,13 @@ void inventory_main_administration_find_manufacture(inventory_list inventory_hea
     }
     if(answer==0)
     {
-        system("pause");
+        getchar();
         printf("对不起！没有找到符合您要求的商品！\n");
         return;
     }
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
     return;
 }
 void inventory_main_administration_find_quantity(inventory_list inventory_head,user_list mine)//商品查找-按库存量
@@ -1825,13 +1825,13 @@ void inventory_main_administration_find_quantity(inventory_list inventory_head,u
     }
     if(answer==0)
     {
-        system("pause");
+        getchar();
         printf("对不起！没有找到符合您要求的商品！\n");
         return;
     }
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
     return;
 }
 void inventory_main_administration_find_pirce(inventory_list inventory_head,user_list mine)//商品查找-按进价区间
@@ -1855,13 +1855,13 @@ void inventory_main_administration_find_pirce(inventory_list inventory_head,user
     }
     if(answer==0)
     {
-        system("pause");
+        getchar();
         printf("对不起！没有找到符合您要求的商品！\n");
         return;
     }
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
     return;
 }
 
@@ -1944,7 +1944,7 @@ void inventory_main_administration_adds_file(inventory_list inventory_head,user_
         rear = rear->next;
     printf("请使用配套库存管理系统指定格式将符合要求的数据文件重命名为ADD Inventory information.dat,并将数据文件放在程序源目录！\n");
     printf("完成全部工作请继续：\n");
-    system("pause");
+    getchar();
     fp = fopen("ADD Inventory information.dat","r");
     if(fp == NULL)
     {
@@ -2185,7 +2185,7 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
             {
                 printf("%s %s\n",ni,ch);
                 printf("输入有误，请重新输入！\n");
-                system("pause");
+                getchar();
                 continue;
             }
             //考虑编号输入有误的情况
@@ -2282,12 +2282,12 @@ void commodity_main_administration_sell(inventory_list inventory_head,commodity_
     {
         clear_display();
         printf("欢迎您的下次光临！\n");
-        system("pause");
+        getchar();
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
     printf("本次购物结束！祝您购物满意，心情愉快！\n");
-    system("pause");
+    getchar();
     }
     }
     return;
@@ -2309,7 +2309,7 @@ void commodity_main_administration_return(inventory_list inventory_head,commodit
     if(sel>commodity_head->next->num)
     {
         printf("输入有误，退货失败！\n");
-        system("pause");
+        getchar();
         return;
     }
     printf("订单信息：\n");
@@ -2325,7 +2325,7 @@ void commodity_main_administration_return(inventory_list inventory_head,commodit
     if(commodity->sell_num<0)
     {
         printf("对不起，您选择的销售信息编码为退货商品，禁止多次退货！\n");
-        system("pause");
+        getchar();
         return;
     }
     printf("请输入您的退货量（输入-1取消操作）：");
@@ -2400,7 +2400,7 @@ void commodity_main_administration_return(inventory_list inventory_head,commodit
         a->next = NULL;
     }
     printf("退货成功！\n");
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_record(commodity_list commodity_head,user_list mine)//交易记录调取
@@ -2459,7 +2459,7 @@ void commodity_main_administration_record_all(commodity_list commodity_head,user
     {
         for(i=0;i<15;i++)printf("\n");
         for(i=0;i<60;i++)printf(" ");printf("\n当前系统交易记录数据为空！\n");
-        system("pause");
+        getchar();
         return;
     }
     //表头
@@ -2473,7 +2473,7 @@ void commodity_main_administration_record_all(commodity_list commodity_head,user
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_record_year(commodity_list commodity_head,user_list mine)//交易记录按年调取
@@ -2500,11 +2500,11 @@ void commodity_main_administration_record_year(commodity_list commodity_head,use
     {
         clear_display();
         printf("对不起，没有找到相关数据！\n");
-        system("pause");
+        getchar();
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_record_month(commodity_list commodity_head,user_list mine)
@@ -2531,11 +2531,11 @@ void commodity_main_administration_record_month(commodity_list commodity_head,us
     {
         clear_display();
         printf("对不起，没有找到相关数据！\n");
-        system("pause");
+        getchar();
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_record_day(commodity_list commodity_head,user_list mine)//交易记录按日调取
@@ -2562,11 +2562,11 @@ void commodity_main_administration_record_day(commodity_list commodity_head,user
     {
         clear_display();
         printf("对不起，没有找到相关数据！\n");
-        system("pause");
+        getchar();
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_record_seller(commodity_list commodity_head,user_list mine)//调取销售员交易记录
@@ -2592,11 +2592,11 @@ void commodity_main_administration_record_seller(commodity_list commodity_head,u
     {
         clear_display();
         printf("对不起，没有找到相关数据！\n");
-        system("pause");
+        getchar();
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_record_order(commodity_list commodity_head,user_list mine)//调取订单号交易记录
@@ -2622,11 +2622,11 @@ void commodity_main_administration_record_order(commodity_list commodity_head,us
     {
         clear_display();
         printf("对不起，没有找到相关数据！\n");
-        system("pause");
+        getchar();
     }
     printf("\n");
     for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-    system("pause");
+    getchar();
     return;
 }
 void commodity_main_administration_revamp(commodity_list commodity_head,user_list mine)//修改交易记录
@@ -2646,7 +2646,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
     if(num>sum||num<0)
     {
         printf("输入有误，修改失败！\n");
-        system("pause");
+        getchar();
         return;
     }
     if(num == -1) return;
@@ -2692,7 +2692,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 2:
         printf("当前商品生产企业名称为：%s\n",p->company);
@@ -2707,7 +2707,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         if(strlen(ch)>30&&strlen(ch)<3)
         {
             printf("对不起！修改失败！\n");
-            system("pause");
+            getchar();
             break;
         }
         }
@@ -2718,7 +2718,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 3:
         printf("当前商品分类为：%s\n",p->type);
@@ -2733,7 +2733,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         if(strlen(ch)>30&&strlen(ch)<1)
         {
             printf("对不起！修改失败！\n");
-            system("pause");
+            getchar();
             break;
         }
         }
@@ -2744,7 +2744,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 4:
         printf("当前商品销售日期为：%s\n",p->date_market);
@@ -2761,7 +2761,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 5://进价
         printf("当前商品进价为：%.2lf\n",p->pirce_enter);
@@ -2775,7 +2775,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 6://销量
         printf("当前商品销售量为：%d\n",p->sell_num);
@@ -2790,7 +2790,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 7://利润
         printf("当前商品利润为：%.2lf\n",p->pircr_profit);
@@ -2805,7 +2805,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         printf("\n");
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 8:
         printf("确认删除？（1.确认 2.取消）");
@@ -2822,7 +2822,7 @@ void commodity_main_administration_revamp(commodity_list commodity_head,user_lis
         commodity_head->next->num = commodity_head->next->num-1;
         printf("删除成功！\n");
         commodity_save(commodity_head);
-        system("pause");
+        getchar();
         return;
     case 0:
         return;
@@ -2880,7 +2880,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         if(sum_enter==0)
         {
             for(i=0;i<50;i++)printf(" ");printf("没有与之相关的销售记录，无效操作！\n");
-            system("pause");
+            getchar();
             continue;
         }
         for(i=0;i<50;i++)printf(" ");printf("%s年年度销售情况统计：\n\n",ch);
@@ -2889,7 +2889,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         for(i=0;i<50;i++)printf(" ");printf("本年度亏损额：%.2lf\n\n",sum_loss);
         for(i=0;i<50;i++)printf(" ");printf("本年度退货金额：%.2lf\n\n",sum_return);
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
         return;
     case 2:
         for(i=0;i<60;i++)printf(" ");printf("请输入您想统计月度销售情况的月度（xxxx.xx）：");
@@ -2917,7 +2917,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         if(sum_enter==0)
         {
             for(i=0;i<50;i++)printf(" ");printf("没有与之相关的销售记录，无效操作！\n");
-            system("pause");
+            getchar();
             continue;
         }
         for(i=0;i<50;i++)printf(" ");printf("%s月月度销售情况统计：\n\n",ch);
@@ -2926,7 +2926,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         for(i=0;i<50;i++)printf(" ");printf("本月度亏损额：%.2lf\n\n",sum_loss);
         for(i=0;i<50;i++)printf(" ");printf("本月度退货金额：%.2lf\n\n",sum_return);
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
         return;
     case 3:
         for(i=0;i<60;i++)printf(" ");printf("请输入您想统计一日销售情况的日期（xxxx.xx.xx）：");
@@ -2954,7 +2954,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         if(sum_enter==0)
         {
             for(i=0;i<50;i++)printf(" ");printf("没有与之相关的销售记录，无效操作！\n");
-            system("pause");
+            getchar();
             continue;
         }
         for(i=0;i<50;i++)printf(" ");printf("%s日一日销售情况统计：\n\n",ch);
@@ -2963,7 +2963,7 @@ void commodity_main_administration_analyse(commodity_list commodity_head,user_li
         for(i=0;i<50;i++)printf(" ");printf("本日亏损额：%.2lf\n\n",sum_loss);
         for(i=0;i<50;i++)printf(" ");printf("本日退货金额：%.2lf\n\n",sum_return);
         for(i=0;i<120;i++)printf(" ");printf("操作人：%s\n",mine->name);
-        system("pause");
+        getchar();
         return;
     case 0:
         return;
