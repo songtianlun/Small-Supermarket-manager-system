@@ -3074,12 +3074,12 @@ void resize_window(int cols, int lines) {
     #ifdef _WIN32
     char cmd[80];
     sprintf(str, "mode con cols=%d lines=%d", clos, lines);
-    system(cmd)
+    system(cmd);
     #endif
     #ifdef linux
     char cmd[80];
     sprintf(str, "resize -s %d %d", clos, lines);
-    system(cmd)
+    system(cmd);
     #endif
     return;
 }
