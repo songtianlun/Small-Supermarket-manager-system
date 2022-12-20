@@ -3073,12 +3073,12 @@ void clear_display() {
 void resize_window(int cols, int lines) {
     #ifdef _WIN32
     char cmd[80];
-    sprintf(str, "mode con cols=%d lines=%d", clos, lines);
+    sprintf(str, "mode con cols=%d lines=%d", cols, lines);
     system(cmd);
     #endif
     #ifdef linux
     char cmd[80];
-    sprintf(str, "resize -s %d %d", clos, lines);
+    sprintf(str, "resize -s %d %d", cols, lines);
     system(cmd);
     #endif
     return;
