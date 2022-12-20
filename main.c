@@ -630,6 +630,7 @@ void user_main_administration(user_list user_head,user_list mine)//高级用户�
     for(i=0;i<60;i++)printf(" ");printf("0.退出用户信息管理程序\n\n");
     for(i=0;i<60;i++)printf(" ");printf("请输入您想执行的操作代码：");
     scanf("%d",&sel);
+    getchar();
     switch(sel)
     {
     case 1:
