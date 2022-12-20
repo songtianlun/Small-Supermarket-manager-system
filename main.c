@@ -49,6 +49,7 @@ struct COMMODITY//销售信息
 };
 typedef struct COMMODITY commodity_lnode,*commodity_list;
 
+void resize_window(int cols, int lines);
 void clear_display();
 void display_main();
 void display_administration();
@@ -133,7 +134,7 @@ int main()
     inventory_head->next = NULL;
     user_head->next = NULL;
 
-    // system("mode con cols=180 lines=80");
+    resize_window(180, 80);
 
     while(1)
     {
@@ -3065,6 +3066,20 @@ void clear_display() {
     #endif
     #ifdef linux
     system("clear");
+    #endif
+    return;
+}
+
+void resize_window(int cols, int lines) {
+    #ifdef _WIN32
+    char cmd[80];
+    sprintf(str, "mode con cols=%d lines=%d", clos, lines);
+    system(cmd)
+    #endif
+    #ifdef linux
+    char cmd[80];
+    sprintf(str, "resize -s %d %d", clos, lines);
+    system(cmd)
     #endif
     return;
 }
